@@ -41,7 +41,7 @@ Here are some ways *you* can contribute:
 * by [refactoring][pivotal] code
 * by closing [issues][pivotal]
 
-Eager to get started? Check out our [Project Setup](https://github.com/AgileVentures/TakeMeAway/wiki/Project-Setup)
+Eager to get started? Check out our [Project Setup](https://github.com/AgileVentures/TMA-client/wiki/Project-Setup)
 page
 
 ## About AgileVentures
