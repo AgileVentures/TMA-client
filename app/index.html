@@ -20,25 +20,23 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <a class="navbar-brand" href="#/">tmaClient</a>
-          </div>
-
-          <div class="collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
+    <header class="navigation" role="banner">
+      <div class="navigation-wrapper">
+        <a href="javascript:void(0)" class="logo">
+          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2.png" alt="Logo Image">
+        </a>
+        <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+        <nav role="navigation">
+          <ul id="js-navigation-menu" class="navigation-menu show">
+            <li class="nav-link"><a href="javascript:void(0)"></a></li>
+            <li class="nav-link"><a href="javascript:void(0)">Menu</a></li>
+            <li class="nav-link"><a href="javascript:void(0)">Specials</a></li>
+          </ul>
+        </nav>
+        <div class="navigation-tools">
         </div>
       </div>
-    </div>
+    </header>
 
     <div class="container">
     <div ng-view=""></div>
@@ -46,7 +44,6 @@
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
       </div>
     </div>
 
