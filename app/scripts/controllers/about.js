@@ -7,11 +7,5 @@
  * # AboutCtrl
  * Controller of the tmaClientApp
  */
-angular.module('tmaClientApp')
-  .controller('AboutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+app.controller('AboutController', function ($scope) {
+});

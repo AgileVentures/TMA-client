@@ -8,26 +8,31 @@
  *
  * Main module of the application.
  */
-angular
-  .module('tmaClientApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+
+var app = angular.module('tmaClientApp', [
+  'ngAnimate',
+  'ngCookies',
+  'ngResource',
+  'ngRoute',
+  'ngSanitize',
+  'ngTouch'
+]);
+
+app.config(function ($routeProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'views/main.html',
+      controller: 'MainController'
+    })
+    .when('/about', {
+      templateUrl: 'views/about.html',
+      controller: 'AboutController'
+    })
+    .when('/menu', {
+      templateUrl: 'views/menu.html',
+      controller: 'MenuController'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+});
