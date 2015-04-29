@@ -7,5 +7,5 @@
  * # MainCtrl
  * Controller of the tmaClientApp
  */
-app.controller('MainController', function ($scope) {
+app.controller('MenuController', function ($scope) {
 });
