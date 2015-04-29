@@ -1,0 +1,5 @@
+{
+  "name": "tma-client",
+  "root": "dist",
+  "clean_urls": true
+}
