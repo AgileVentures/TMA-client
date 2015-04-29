@@ -9,6 +9,11 @@
 [tma-api]: https://github.com/AgileVentures/TakeMeAway
 [iojs-install]: https://github.com/coolaj86/iojs-install-script
 
+[semaphore-badge]: https://semaphoreci.com/api/v1/projects/76fd11be-0228-455d-b92e-fa3f4608aeb0/409755/badge.svg
+[semaphore]: https://semaphoreci.com/diraulo/tma-client--2
+
+[![Build Status][semaphore-badge]][semaphore]
+
 Repository for a sample client application for [TakeMeAway API][tma-api]
 
 
