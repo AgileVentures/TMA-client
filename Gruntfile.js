@@ -27,6 +27,15 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: appConfig,
 
+    // Coveralls
+    coveralls: {
+      options: {
+        debug: true,
+        coverageDir: 'coverage/',
+        recursive: true
+      }
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
