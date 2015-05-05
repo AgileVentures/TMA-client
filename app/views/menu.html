@@ -1,19 +1,22 @@
 <section>
-  <div class="cards">
+  <div ng-repeat="menu in menus" class="cards">
     <div class="card">
       <div class="card-image">
         <img src="http://lorempixel.com/960/450/food/1" alt="">
       </div>
       <div class="card-header">
-        First Item
+	      {{menu.title}}
+        <div class="price">
+          <span></span>
+        </div>
         <button>Add to cart</button>
       </div>
       <div class="card-copy">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.</p>
+        <p></p>
       </div>
     </div>
 
-    <div class="card">
+    <!--div class="card">
       <div class="card-image">
         <img src="http://lorempixel.com/960/450/food/2" alt="">
       </div>
@@ -78,6 +81,6 @@
       <div class="card-copy">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
       </div>
-    </div>
+    </div-->
   </div>
 </section>

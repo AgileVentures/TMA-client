@@ -12,8 +12,8 @@
 var app = angular.module('tmaClientApp', [
   'ngAnimate',
   'ngCookies',
-  'ngResource',
   'ngRoute',
+  'ngResource',
   'ngSanitize',
   'ngTouch'
 ]);

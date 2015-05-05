@@ -1215,4 +1215,11 @@ section {
     content: "";
     display: table; }
 
+.price {
+  width: 60px;
+  margin: auto;
+  text-align: center;
+  border-bottom: 1px solid #eae4d9;
+  padding: 19px 0px 8px; }
+
 /*# sourceMappingURL=main.css.map */
