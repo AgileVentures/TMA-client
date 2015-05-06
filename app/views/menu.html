@@ -1,82 +1,21 @@
 <section>
-  <div class="cards">
-    <div class="card">
-      <div class="card-image">
-        <img src="http://lorempixel.com/960/450/food/1" alt="">
-      </div>
-      <div class="card-header">
-        First Item
-        <button>Add to cart</button>
-      </div>
-      <div class="card-copy">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-image">
-        <img src="http://lorempixel.com/960/450/food/2" alt="">
-      </div>
-      <div class="card-header">
-        Another Item
-        <button>Add to cart</button>
-      </div>
-      <div class="card-copy">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-image">
-        <img src="http://lorempixel.com/960/450/food/3" alt="">
-      </div>
-      <div class="card-header">
-        Lovely
-        <button>Add to cart</button>
-      </div>
-      <div class="card-copy">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      </div>
-    </div>
-  </div>
-
-  <div class="cards">
-    <div class="card">
-      <div class="card-image">
-        <img src="http://lorempixel.com/960/450/food/4" alt="">
-      </div>
-      <div class="card-header">
-        Yet another Item
-        <button>Add to cart</button>
-      </div>
-      <div class="card-copy">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-image">
-        <img src="http://lorempixel.com/960/450/food/5" alt="">
-      </div>
-      <div class="card-header">
-        Delicious
-        <button>Add to cart</button>
-      </div>
-      <div class="card-copy">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-image">
-        <img src="http://lorempixel.com/960/450/food/6" alt="">
-      </div>
-      <div class="card-header">
-        The Last Item
-        <button>Add to cart</button>
-      </div>
-      <div class="card-copy">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+  <div ng-repeat="menu in menus.menus">
+    <h1>{{menu.menu.title}}</h1>
+    <div class="cards">
+      <div ng-repeat="menu_item in menu.items" class="card">
+        <div class="card-image">
+          <img ng-src="http://lorempixel.com/960/450/food/{{$index}}" alt="">
+        </div>
+        <div class="card-header">
+  	      {{menu_item.title}}
+          <div class="price">
+            <span>{{menu_item.price}}</span>
+          </div>
+          <button>Add to cart</button>
+        </div>
+        <div class="card-copy">
+          <p>{{menu_item.description}}</p>
+        </div>
       </div>
     </div>
   </div>
