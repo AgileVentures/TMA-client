@@ -1,4 +1,4 @@
-# TMA-client
+# TMA-client  [![Build Status][semaphore-badge]][semaphore] [![Coverage Status][coveralls-badge]][coveralls]
 [oo-sw]: http://opensource.org/osd
 [about-us]: http://www.agileventures.org/about-us
 [members]: http://www.agileventures.org/users
@@ -11,8 +11,9 @@
 
 [semaphore-badge]: https://semaphoreci.com/api/v1/projects/76fd11be-0228-455d-b92e-fa3f4608aeb0/409755/badge.svg
 [semaphore]: https://semaphoreci.com/diraulo/tma-client--2
+[coveralls-badge]: https://coveralls.io/repos/AgileVentures/TMA-client/badge.svg
+[coveralls]: https://coveralls.io/r/AgileVentures/TMA-client
 
-[![Build Status][semaphore-badge]][semaphore]
 
 Repository for a sample client application for [TakeMeAway API][tma-api]
 
