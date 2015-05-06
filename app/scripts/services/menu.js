@@ -1,5 +1,5 @@
 'use strict';
 
 app.factory('Menu', function($resource) {
-  return $resource('http://localhost:3000/v1/menus');
+  return $resource('//tma-develop.herokuapp.com/v1/menus');
 });
