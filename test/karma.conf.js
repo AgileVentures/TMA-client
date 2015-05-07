@@ -20,6 +20,7 @@ module.exports = function(config) {
     ],
 
     reporters: [
+      'spec',
       'coverage'
     ],
 
@@ -75,6 +76,7 @@ module.exports = function(config) {
     // Which plugins to enable
     plugins: [
       'karma-phantomjs-launcher',
+      'karma-spec-reporter',
       'karma-jasmine',
       'karma-coverage'
     ],
