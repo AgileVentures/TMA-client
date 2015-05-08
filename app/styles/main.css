@@ -1215,11 +1215,16 @@ section {
     content: "";
     display: table; }
 
-.price {
-  width: 60px;
-  margin: auto;
-  text-align: center;
-  border-bottom: 1px solid #eae4d9;
-  padding: 19px 0px 8px; }
+.card {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%; }
+  .card:last-child {
+    margin-right: 0; }
+  .card .add-to-cart {
+    float: right; }
+  .card .price {
+    font-weight: normal; }
 
 /*# sourceMappingURL=main.css.map */

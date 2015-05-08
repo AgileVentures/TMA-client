@@ -7,11 +7,9 @@
           <img ng-src="http://lorempixel.com/960/450/food/{{$index}}" alt="">
         </div>
         <div class="card-header">
-  	      {{menu_item.title}}
-          <div class="price">
-            <span>{{menu_item.price}}</span>
-          </div>
-          <button>Add to cart</button>
+  	      {{menu_item.item}}
+          <small class="price">kr{{menu_item.price}}</small>
+          <button class="add-to-cart">Add to cart</button>
         </div>
         <div class="card-copy">
           <p>{{menu_item.description}}</p>
