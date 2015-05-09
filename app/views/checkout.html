@@ -9,7 +9,7 @@
 		<th>Subtotal</th>
 	</tr>
 	<tr ng-repeat="item in basket.get()">
-		<td>{{item.type.name}}</td>
+		<td>{{item.type.item}}</td>
 		<td>{{item.type.price | currency}}</td>
 		<td>{{item.quantity}}</td>
 		<td>{{ item.quantity * item.type.price | currency }}</td>

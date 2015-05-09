@@ -3,19 +3,19 @@
 app.factory('basket', function() {
   // Service logic
   // ...
-
   var basket = {};
   var count = 0;
   // Public API here
   return {
     get: function() {
+      console.log(basket);
       return basket;
     },
     add: function (item){
-    	if (basket [item.id]){
-    		basket[item.id].quantity += 1;
+    	if (basket [item.item]){
+    		basket[item.item].quantity += 1;
     	} else {
-    		basket[item.id] = {
+    		basket[item.item] = {
     			type: item,
     			quantity: 1
     		};
@@ -23,10 +23,11 @@ app.factory('basket', function() {
     	count += 1;
     },
     remove: function (item){
-    	count -= basket[item.id].amount;
-    	delete basket[item.id];
+    	count -= basket[item.item].amount;
+    	delete basket[item.item];
     },
     count: function () {
+      console.log(count);
     	return count;
     }
   };
