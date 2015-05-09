@@ -1,4 +1,4 @@
-# TMA-client  [![Build Status][semaphore-badge]][semaphore] [![Coverage Status][coveralls-badge]][coveralls]
+# TMA-client  [![Build Status][semaphore-badge]][semaphore] [![Coverage Status][coverage-badge]][coverage]
 [oo-sw]: http://opensource.org/osd
 [about-us]: http://www.agileventures.org/about-us
 [members]: http://www.agileventures.org/users
@@ -11,28 +11,61 @@
 
 [semaphore-badge]: https://semaphoreci.com/api/v1/projects/76fd11be-0228-455d-b92e-fa3f4608aeb0/409755/badge.svg
 [semaphore]: https://semaphoreci.com/diraulo/tma-client--2
-[coveralls-badge]: https://coveralls.io/repos/AgileVentures/TMA-client/badge.svg
-[coveralls]: https://coveralls.io/r/AgileVentures/TMA-client
-
+[coverage-badge]: https://codeclimate.com/github/AgileVentures/TMA-client/badges/coverage.svg
+[coverage]: https://codeclimate.com/github/AgileVentures/TMA-client/coverage
 
 Repository for a sample client application for [TakeMeAway API][tma-api]
 
 
-## Build & development
+## Demo
 
-#### Requirements
+Check out [development.tma-client.divshot.io](http://development.tma-client.divshot.io)
 
-- [install nodejs][iojs-install]
-- grunt-cli `npm install -g grunt-cli`
+## Development
 
-#### Build/Run the application
 
-Run `grunt` for building and `grunt serve` for preview.
+1. Fork and clone the repository
+2. Install nodejs using nvm (If you don't have it already. Recommended version `iojs-v1.6.4` or `node v0.12.2`)
 
-## Testing
+  ```shell
+  $ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.25.1/install.sh | bash
+  $ source ~/.nvm/nvm.sh
+  ```
 
-Running `grunt test` will run the unit tests with karma.
+  Add the last line to your ~/.bashrc, ~/.profile, or ~/.zshrc file to have it automatically sourced upon login.
 
+  ```shell
+  $ nvm install iojs-v1.6.4
+  or
+  $ nvm install 0.12.2
+  ```
+
+3. Install `grunt-cli` and `bower`
+
+  ```shell
+  $ npm install -g grunt-cli bower
+  ```
+
+4. Install project dependencies
+
+  ```shell
+  $ cd /path/to/project
+  $ npm install && bower install
+  ```
+
+5. Run all tests
+
+  ```shell
+  $ grunt test
+  ```
+
+6. Run the application
+
+  ```shell
+  $ grunt serve
+  ```
+
+<br>
 
 ## Contributing
 In the spirit of [open source software][oo-sw], **everyone** is encouraged to help

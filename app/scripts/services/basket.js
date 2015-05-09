@@ -12,7 +12,6 @@ app.factory('basket', function() {
       return basket;
     },
     add: function (item){
-    	debugger;
     	if (basket [item.id]){
     		basket[item.id].quantity += 1;
     	} else {

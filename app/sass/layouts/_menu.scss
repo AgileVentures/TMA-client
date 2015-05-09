@@ -4,11 +4,14 @@ section {
   margin-top: 60px;
 }
 
-.price
-{
-  width: 60px;
-  margin: auto;
-  text-align: center;
-  border-bottom: 1px solid #eae4d9;
-  padding: 19px 0px 8px;
+.card {
+  @include span-columns(3);
+
+  .add-to-cart {
+    float: right;
+  }
+
+  .price {
+    font-weight: normal;
+  }
 }
