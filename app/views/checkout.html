@@ -1,0 +1,23 @@
+<h2>Checkout</h2>
+<div ng-show="basket.count() > 0">
+
+<table>
+	<tr>
+		<th>Item Name</th>
+		<th>Item Price</th>
+		<th>Item Quantity</th>
+		<th>Subtotal</th>
+	</tr>
+	<tr ng-repeat="item in basket.get()">
+		<td>{{item.type.name}}</td>
+		<td>{{item.type.price | currency}}</td>
+		<td>{{item.quantity}}</td>
+		<td>{{ item.quantity * item.type.price | currency }}</td>
+
+	</tr>
+</table>
+<p>Total {{total()}}</p>
+</div>
+<a ng-show="basket.count() == 0">
+No items in basket!
+</a>
