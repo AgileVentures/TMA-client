@@ -8,7 +8,7 @@ app.factory('basket', function() {
   // Public API here
   return {
     get: function() {
-      console.log(basket);
+      //console.log(basket);
       return basket;
     },
     add: function (item){
@@ -27,7 +27,7 @@ app.factory('basket', function() {
     	delete basket[item.item];
     },
     count: function () {
-      console.log(count);
+      //console.log(count);
     	return count;
     }
   };

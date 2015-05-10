@@ -3,7 +3,7 @@
 describe('Service: basket', function () {
 
   // load the service's module
-  beforeEach(module('TMAClientApp'));
+  beforeEach(module('tmaClientApp'));
 
   // instantiate service
   var basket;
@@ -15,7 +15,7 @@ describe('Service: basket', function () {
     expect(basket.count()).toBe(0);
   });
 
-  iit('should do something', function () {
+  it('should do something', function () {
     expect(!!basket).toBe(true);
   });
 

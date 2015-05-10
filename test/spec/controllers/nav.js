@@ -3,7 +3,7 @@
 describe('Controller: NavCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('TMAClientApp'));
+  beforeEach(module('tmaClientApp'));
 
   var NavCtrl,
     scope;
@@ -16,7 +16,4 @@ describe('Controller: NavCtrl', function() {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function() {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
 });
