@@ -1,22 +1,40 @@
 <h2>Checkout</h2>
 <div ng-show="basket.count() > 0">
-
-<table>
-	<tr>
-		<th>Item Name</th>
-		<th>Item Price</th>
-		<th>Item Quantity</th>
-		<th>Subtotal</th>
-	</tr>
-	<tr ng-repeat="item in basket.get()">
-		<td>{{item.type.item}}</td>
-		<td>{{item.type.price | currency}}</td>
-		<td>{{item.quantity}}</td>
-		<td>{{ item.quantity * item.type.price | currency }}</td>
-
-	</tr>
-</table>
-<p>Total {{total()}}</p>
+	<section id="checkout">
+		<div id="order_items">
+			<table>
+				<tr>
+					<th>Item Name</th>
+					<th>Item Price</th>
+					<th>Item Quantity</th>
+					<th>Subtotal</th>
+				</tr>
+				<tr ng-repeat="item in basket.get()">
+					<td>{{item.type.item}}</td>
+					<td>{{item.type.price | currency}}</td>
+					<td>{{item.quantity}}</td>
+					<td>{{ item.quantity * item.type.price | currency }}</td>
+				</tr>
+			</table>
+			<p>Total {{total() | currency }}</p>
+		</div>
+		<div id="order_items">
+			<p>
+				  <button
+				    class="btn btn-block btn-primary"
+				    ng-click="basket.checkout('PayPal')"
+				    ng-disabled="basket.getTotalCount() < 1">
+				    <i class="icon-ok icon-white" /> check out using PayPal
+				  </button>
+				  <button 
+				    class="btn btn-block btn-primary" 
+				    ng-click="basket.checkout('Google')" 
+				    ng-disabled="basket.getTotalCount() < 1">
+				    <i class="icon-ok icon-white" /> check out using Google
+				  </button>
+			</p>
+		</div>
+	</section>
 </div>
 <a ng-show="basket.count() == 0">
 No items in basket!

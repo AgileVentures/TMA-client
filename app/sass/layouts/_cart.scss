@@ -1,4 +1,11 @@
-.checkoutinfo,.buttoninfo
-{
-	 @include span-columns(6);
+section {
+  @include outer-container;
+ 
+  #order_items{
+    @include span-columns(6);
+  }
+ 
+  #order_buttons{
+    @include span-columns(6);
+  }
 }
