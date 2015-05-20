@@ -1227,4 +1227,27 @@ section {
   .card .price {
     font-weight: normal; }
 
+section {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  section::after {
+    clear: both;
+    content: "";
+    display: table; }
+  section #order_items {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    section #order_items:last-child {
+      margin-right: 0; }
+  section #order_buttons {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    section #order_buttons:last-child {
+      margin-right: 0; }
+
 /*# sourceMappingURL=main.css.map */

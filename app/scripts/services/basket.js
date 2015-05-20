@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('basket', function() {
+app.factory('Basket', function() {
   // Service logic
   // ...
   var basket = {};
@@ -8,27 +8,33 @@ app.factory('basket', function() {
   // Public API here
   return {
     get: function() {
-      //console.log(basket);
       return basket;
     },
-    add: function (item){
-    	if (basket [item.item]){
-    		basket[item.item].quantity += 1;
-    	} else {
-    		basket[item.item] = {
-    			type: item,
-    			quantity: 1
-    		};
-    	}
-    	count += 1;
+
+    add: function(item) {
+      if (basket[item.name]) {
+        basket[item.name].quantity += 1;
+      } else {
+        basket[item.name] = item;
+        count += 1;
+      }
     },
-    remove: function (item){
-    	count -= basket[item.item].amount;
-    	delete basket[item.item];
+    remove: function(item) {
+      delete basket[item.name];
+      count -= 1;
     },
-    count: function () {
-      //console.log(count);
-    	return count;
+
+    count: function() {
+      return count;
+    },
+
+    totalAmount: function() {
+      var total = 0;
+      angular.forEach(basket, function(item) {
+        console.log(item);
+        total += item.price * item.quantity;
+      });
+      return total;
     }
   };
 });

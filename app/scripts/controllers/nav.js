@@ -1,5 +1,5 @@
 'use strict';
 
-app.controller('NavController', function($scope, basket) {
-  $scope.basket = basket;
+app.controller('NavController', function($scope, Basket) {
+  $scope.basket = Basket;
 });

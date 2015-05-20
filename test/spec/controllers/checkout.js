@@ -6,13 +6,21 @@ describe('Controller: CheckoutCtrl', function() {
   beforeEach(module('tmaClientApp'));
 
   var CheckoutCtrl,
+    rootScope,
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function($controller,  $rootScope) {
-    scope =  $rootScope.new();
+  beforeEach(inject(function($controller, $rootScope) {
+    rootScope = $rootScope;
+    scope = $rootScope.$new();
+
     CheckoutCtrl = $controller('CheckoutCtrl', {
-      $scope: scope
+      $scope: scope,
     });
   }));
+
+  it('should have basket object on the scope', function() {
+    rootScope.$apply();
+    expect(scope.basket).toBeDefined();
+  });
 });
