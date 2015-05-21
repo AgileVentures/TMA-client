@@ -1,18 +1,24 @@
 <section>
   <div ng-repeat="menu in menus.menus">
-    <h1>{{menu.menu.title}}</h1>
+    <h1>{{menu.title}}</h1>
     <div class="cards">
       <div ng-repeat="menu_item in menu.items" class="card">
         <div class="card-image">
           <img ng-src="http://lorempixel.com/960/450/food/{{$index}}" alt="">
         </div>
         <div class="card-header">
-  	      {{menu_item.item}}
-          <small class="price">{{menu_item.price}}</small>
+  	      {{menu_item.name}}
+          <small class="price">{{menu_item.price | currency}}</small>
+          <button class="add-to-cart" ng-click="basket.add(menu_item)">Add to cart</button>
         </div>
-        <button class="add-to-cart" ng-click="basket.add(menu_item)">Add to cart</button>
         <div class="card-copy">
           <p>{{menu_item.description}}</p>
+        </div>
+        <div class="card-copy">
+          <p>
+            <span class="card-header-2">Ingredients:</span>
+            {{menu_item.ingredients}}
+          </p>
         </div>
       </div>
     </div>
