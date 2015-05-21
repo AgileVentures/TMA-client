@@ -23,7 +23,7 @@ describe('Service: Basket', function () {
   });
 
   describe('Basket.add()', function() {
-    var item1 = { id: 2, name: 'Aloo Matar', quantity: 1, price: 59.0 };
+    var item1 = { id: 2, name: 'Aloo Matar', price: 59.0 };
 
     it('should have a function to add new items to basket', function() {
       expect(angular.isFunction(mockBasket.add)).toBe(true);
@@ -47,7 +47,8 @@ describe('Service: Basket', function () {
   });
 
   describe('Basket.remove()', function() {
-    var item1 = { id: 2, name: 'Aloo Matar', quantity: 1, price: 59.0 };
+    var item1 = { id: 2, name: 'Aloo Matar', price: 59.0 };
+    var item2 = { id: 3, name: 'Chicken Razala', price: 29.0 };
 
     it('should have a function to remove items from basket', function() {
       expect(angular.isFunction(mockBasket.remove)).toBe(true);
@@ -56,8 +57,9 @@ describe('Service: Basket', function () {
     it('should remove a given item from basket', function() {
       expect(mockBasket.get()).toEqual({});
       mockBasket.add(item1);
+      mockBasket.add(item2);
       mockBasket.remove(item1);
-      expect(mockBasket.count()).toBe(0);
+      expect(mockBasket.count()).toBe(1);
     });
   });
 
@@ -66,8 +68,8 @@ describe('Service: Basket', function () {
   });
 
   describe('Basket.totalAmount()', function() {
-    var item1 = { id: 2, name: 'Aloo Matar', quantity: 1, price: 59.0 };
-    var item2 = { id: 3, name: 'Chicken Razala', quantity: 1, price: 29.0 };
+    var item1 = { id: 2, name: 'Aloo Matar', price: 59.0 };
+    var item2 = { id: 3, name: 'Chicken Razala', price: 29.0 };
 
     it('should have a function that returns total amount of basket', function() {
       expect(angular.isFunction(mockBasket.totalAmount)).toBe(true);

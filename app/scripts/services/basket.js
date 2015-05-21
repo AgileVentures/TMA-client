@@ -16,9 +16,11 @@ app.factory('Basket', function() {
         basket[item.name].quantity += 1;
       } else {
         basket[item.name] = item;
+        basket[item.name].quantity = 1;
         count += 1;
       }
     },
+
     remove: function(item) {
       delete basket[item.name];
       count -= 1;
@@ -31,7 +33,6 @@ app.factory('Basket', function() {
     totalAmount: function() {
       var total = 0;
       angular.forEach(basket, function(item) {
-        console.log(item);
         total += item.price * item.quantity;
       });
       return total;
