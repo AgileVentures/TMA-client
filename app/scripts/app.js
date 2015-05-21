@@ -46,7 +46,7 @@ app.config(function ($routeProvider) {
 });
 
 
-app.run(function($rootScope, $location, AuthenticationService, $http){
+app.run(function($rootScope, $location, AuthenticationService){
   var routePermissions = ['/menu']; //routes that require login
 
   $rootScope.$on('$routeChangeStart', function(){

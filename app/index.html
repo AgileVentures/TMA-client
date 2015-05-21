@@ -37,9 +37,9 @@
             </li>
             <li class="nav-link"><a href="javascript:void(0)">Contact us</a></li>
             <li class="nav-link"><a href="#/checkout">Checkout ({{ basket.count() }})</a></li>
-            <li class="nav-link"><a href="javascript:void(0)">Sign up</a></li>
-            <li class="nav-link"><a href="#/authentication">Sign in</a></li>
-            <li class="nav-link"><a href="#/authentication">Sign Out</a></li>
+            <li class="nav-link"><a href="javascript:void(0)" ng-hide="isLoggedIn()">Sign up</a></li>
+            <li class="nav-link"><a href="#/authentication" ng-hide="isLoggedIn()">Sign in</a></li>
+            <li class="nav-link"><a href="#/" ng-click="signout()" ng-show="isLoggedIn()">Sign Out</a></li>
           </ul>
         </nav>
       </div>
@@ -78,6 +78,7 @@
         <script src="scripts/services/menu.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/authentication.js"></script>
+        <script src="scripts/controllers/navigation.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/menu.js"></script>
         <script src="scripts/controllers/checkout.js"></script>

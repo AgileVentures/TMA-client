@@ -14,7 +14,7 @@ app.controller('AuthenticationController', function ($scope, $location, Authenti
   $scope.signin = function(user){
     AuthenticationService.signin(user).then(
       function(){
-        $location.path('/');
+        $location.path('/menu');
       },
       function(message){
         $scope.user.errorMessage = message;

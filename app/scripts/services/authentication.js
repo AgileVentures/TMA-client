@@ -15,7 +15,7 @@ app.service('AuthenticationService', function ($http, $q, SessionService) {
       return deferred.promise;
     },
     signout: function(){
-
+      SessionService.destroy();
     },
     signup: function(newUser){
 
