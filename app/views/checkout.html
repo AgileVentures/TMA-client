@@ -8,12 +8,14 @@
           <th>Item Price</th>
           <th>Item Quantity</th>
           <th>Subtotal</th>
+          <th></th>
         </tr>
         <tr ng-repeat="item in basket.get()">
           <td>{{item.name}}</td>
           <td>{{item.price | currency}}</td>
           <td>{{item.quantity}}</td>
           <td>{{item.quantity * item.price | currency }}</td>
+          <td><a href="" ng-click="basket.remove(item)">Remove</a></td>
         </tr>
       </table>
       <p>Total {{total() | currency }}</p>
@@ -30,6 +32,4 @@
     </div>
   </section>
 </div>
-<a ng-show="basket.count() == 0">
-No items in basket!
-</a>
+<a ng-show="basket.count() == 0"> No items in basket!</a>

@@ -22,8 +22,7 @@ app.factory('Basket', function() {
     },
 
     remove: function(item) {
-      delete basket[item.name];
-      count -= 1;
+      if (delete basket[item.name]) count -= 1;
     },
 
     count: function() {
