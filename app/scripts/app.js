@@ -24,6 +24,10 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/main.html',
       controller: 'MainController'
     })
+    .when('/authentication', {
+      templateUrl: 'views/authentication.html',
+      controller: 'AuthenticationController'
+    })
     .when('/about', {
       templateUrl: 'views/about.html',
       controller: 'AboutController'
@@ -40,3 +44,17 @@ app.config(function ($routeProvider) {
       redirectTo: '/'
     });
 });
+
+
+app.run(function($rootScope, $location, AuthenticationService, $http){
+  var routePermissions = ['/menu']; //routes that require login
+
+  $rootScope.$on('$routeChangeStart', function(){
+    if ((routePermissions.indexOf($location.path()) != -1) && (!AuthenticationService.isLoggedIn())) {
+      $location.path('/authentication');
+    }
+  })
+
+});
+
+

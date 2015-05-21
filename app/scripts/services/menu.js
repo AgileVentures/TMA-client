@@ -1,7 +1,7 @@
 'use strict';
 
 app.factory('Menu', function($resource) {
-  return $resource('//tma-develop.herokuapp.com/v1/menus', null, {
+  return $resource('//localhost:3000/v1/menus', null, {
     'getMenus': { methods: 'GET', isArray: false }
   });
 });
