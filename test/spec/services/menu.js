@@ -19,12 +19,12 @@ describe('Service: Menu', function() {
   var httpBackend;
   var baseUri = '//tma-develop.herokuapp.com';
   var data = {
-    date_range: 'someDateRange',
-    menus: [{
-      id: 1,
-      title: 'myMenu',
-      start_date: '2015-05-06',
-      end_date: '2015-05-06'
+    'date_range': 'someDateRange',
+    'menus': [{
+      'id': 1,
+      'title': 'myMenu',
+      'start_date': '2015-05-06',
+      'end_date': '2015-05-06'
     }]
   };
 

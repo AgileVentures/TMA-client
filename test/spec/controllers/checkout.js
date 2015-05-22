@@ -20,7 +20,6 @@ describe('Controller: CheckoutCtrl', function() {
   }));
 
   it('should have basket object on the scope', function() {
-    rootScope.$apply();
     expect(scope.basket).toBeDefined();
   });
 });
