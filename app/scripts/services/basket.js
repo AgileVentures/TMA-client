@@ -22,7 +22,10 @@ app.factory('Basket', function() {
     },
 
     remove: function(item) {
-      if (delete basket[item.name]) count -= 1;
+      if (basket[item.name]) {
+        delete basket[item.name];
+        count -= 1;
+      }
     },
 
     count: function() {
@@ -35,6 +38,10 @@ app.factory('Basket', function() {
         total += item.price * item.quantity;
       });
       return total;
+    },
+
+    quantityOf: function(name) {
+      return basket[name].quantity;
     }
   };
 });

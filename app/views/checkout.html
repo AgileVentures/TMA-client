@@ -1,35 +1,34 @@
-<h2>Checkout</h2>
-<div ng-show="basket.count() > 0">
-  <section id="checkout">
-    <div id="order_items">
-      <table>
-        <tr>
-          <th>Item Name</th>
-          <th>Item Price</th>
-          <th>Item Quantity</th>
-          <th>Subtotal</th>
-          <th></th>
-        </tr>
-        <tr ng-repeat="item in basket.get()">
+<section class="checkout">
+  <h1>Checkout</h1>
+  <div class="order_items" ng-show="basket.count() > 0">
+    <table>
+      <thead>
+        <th>Item Name</th>
+        <th>Item Price</th>
+        <th>Item Quantity</th>
+        <th>Subtotal</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in basket.get() track by $index">
           <td>{{item.name}}</td>
           <td>{{item.price | currency}}</td>
           <td>{{item.quantity}}</td>
           <td>{{item.quantity * item.price | currency }}</td>
           <td><a href="" ng-click="basket.remove(item)">Remove</a></td>
         </tr>
-      </table>
-      <p>Total {{total() | currency }}</p>
-    </div>
-    <div>
-      <p>
-        <button class="btn btn-block btn-primary" ng-click="basket.checkout('PayPal')" ng-disabled="basket.getTotalCount() < 1">
-          <i class="icon-ok icon-white" /> check out using PayPal
-        </button>
-        <button class="btn btn-block btn-primary" ng-click="basket.checkout('Google')" ng-disabled="basket.getTotalCount() < 1">
-          <i class="icon-ok icon-white" /> check out using Google
-        </button>
-      </p>
-    </div>
-  </section>
-</div>
-<a ng-show="basket.count() == 0"> No items in basket!</a>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">Total {{basket.totalAmount() | currency }}</td>
+        </tr>
+      </tfoot>
+    </table>
+    <button class="btn btn-block btn-primary" ng-click="basket.checkout()" ng-disabled="basket.getTotalCount() < 1">
+      <i class="icon-ok icon-white" /> Submit
+    </button>
+  </div>
+  <div ng-show="basket.count() == 0">
+    <p> No items in basket!</p>
+  </div>
+</section>
