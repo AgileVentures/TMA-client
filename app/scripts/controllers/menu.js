@@ -7,8 +7,9 @@
  * # MenuController
  * Controller of the tmaClientApp
  */
-app.controller('MenuController', function ($scope, Menu) {
+app.controller('MenuController', function($scope, Menu, Basket) {
   Menu.getMenus().$promise.then(function(response) {
     $scope.menus = response;
   });
+  $scope.basket = Basket;
 });
