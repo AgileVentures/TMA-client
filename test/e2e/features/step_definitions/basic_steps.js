@@ -4,7 +4,6 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
 var expect = chai.expect;
-var assert = require('assert');
 
 module.exports = function() {
   this.World = require('../support/world').World;
@@ -16,12 +15,7 @@ module.exports = function() {
 
   this.Then(/^I should see a navbar$/, function (callback) {
     var navbar = element(by.id('navbar'));
-
-    // navbar.isElementPresent().then(function(v) {
-    //   expect(v).to.be.true;
-    // });
-    // expect(navbar.isElementPresent().then).to.be.true;
-    // assert.equal(element(by.css('#navbar')).isPresent(), true);
-    callback.pending();
+    expect(navbar.isPresent()).to.eventually.equal(true).and.notify(callback);
+    callback();
   });
 };
