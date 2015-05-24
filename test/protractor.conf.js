@@ -15,6 +15,7 @@ exports.config = {
   ],
 
   baseUrl: 'http://localhost:9000',
+  getPageTimeout: 30000,
 
   cucumberOpts: {
     require: 'test/e2e/features/step_definitions/*_steps.js',
