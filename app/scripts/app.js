@@ -53,8 +53,9 @@ app.config(function ($httpProvider) {
   $httpProvider.interceptors.push('authInterceptor');
 });
 
+//restricted paths that will redirect to '#/login' if not loggedin
 app.run(function($rootScope, $location, AuthenticationService){
-  var routePermissions = ['']; //routes that require login. eg: ['/menu']
+  var routePermissions = ['']; //paths that require login. eg: ['/menu']
 
   $rootScope.$on('$routeChangeStart', function(){
     if ((routePermissions.indexOf($location.path()) != -1) && (!AuthenticationService.isLoggedIn())) {

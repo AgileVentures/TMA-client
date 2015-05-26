@@ -4,7 +4,7 @@ app.service('AuthenticationService', function ($http, $q, SessionStoreService) {
   return {
     login: function(user) {
       var deferred = $q.defer();
-      $http.post('//localhost:3000/v1/sessions', user)
+      $http.post('//tma-develop.herokuapp.com/v1/sessions', user)
         .success(function(data){
           SessionStoreService.set(data.user.name, data.user.email, data.authentication_token.token);
           deferred.resolve();
@@ -15,18 +15,17 @@ app.service('AuthenticationService', function ($http, $q, SessionStoreService) {
       return deferred.promise;
     },
     logout: function(){
-      SessionStoreService.destroy();
-      $http.delete('//localhost:3000/v1/sessions')
+      $http.delete('//tma-develop.herokuapp.com/v1/sessions')
       .success(function(data){
-        console.log(data);   //FLASH
+        SessionStoreService.destroy();
       })
       .error(function(data){
-        console.log(data);   //FLASH
+        SessionStoreService.destroy();
       })
     },
     register: function(newUser){
       var deferred = $q.defer();
-      $http.post('//localhost:3000/v1/users', newUser)
+      $http.post('//tma-develop.herokuapp.com/v1/users', newUser)
         .success(function(data){
           SessionStoreService.set(data.user.name, data.user.email, data.authentication_token.token);
           deferred.resolve();
