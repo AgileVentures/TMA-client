@@ -37,11 +37,15 @@
             </li>
             <li class="nav-link"><a href="javascript:void(0)">Contact us</a></li>
             <li class="nav-link"><a href="#/checkout">Checkout ({{ basket.count() }})</a></li>
-            <li class="nav-link"><a href="javascript:void(0)" ng-hide="isLoggedIn()">Sign up</a></li>
-            <li class="nav-link"><a href="#/authentication" ng-hide="isLoggedIn()">Sign in</a></li>
-            <li class="nav-link"><a href="#/" ng-click="signout()" ng-show="isLoggedIn()">Sign Out</a></li>
+
+            <li class="nav-link" ng-hide="isLoggedIn()"><a href="#/register">Register</a></li>
+            <li class="nav-link" ng-hide="isLoggedIn()"><a href="#/login">Login</a></li>
+            <li class="nav-link" ng-show="isLoggedIn()"><span>Logged in as: </span><a href="#/" ng-click="" >{{current_user().name}}</a></li>
+            <li class="nav-link" ng-show="isLoggedIn()"><a href="#/" ng-click="logout()">Logout</a></li>
           </ul>
         </nav>
+
+
       </div>
     </header>
 

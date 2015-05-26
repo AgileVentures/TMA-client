@@ -24,8 +24,12 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/main.html',
       controller: 'MainController'
     })
-    .when('/authentication', {
-      templateUrl: 'views/authentication.html',
+    .when('/login', {
+      templateUrl: 'views/authentication/login.html',
+      controller: 'AuthenticationController'
+    })
+    .when('/register', {
+      templateUrl: 'views/authentication/register.html',
       controller: 'AuthenticationController'
     })
     .when('/about', {

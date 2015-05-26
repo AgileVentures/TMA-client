@@ -9,5 +9,6 @@
  */
 app.controller('navigationController', function ($scope, AuthenticationService) {
   $scope.isLoggedIn = AuthenticationService.isLoggedIn;
-  $scope.signout = AuthenticationService.signout;
+  $scope.current_user = AuthenticationService.current_user;
+  $scope.logout = AuthenticationService.logout;
 });

@@ -1,0 +1,10 @@
+<fieldset>
+  <form class="authenticate">
+    <div ng-repeat="errorMessage in newUser.errorMessages" class="error-message">{{errorMessage}}</div>
+    <label>Name:</label> <input type="text" ng-model="newUser.name">
+    <label>Email:</label> <input type="email" ng-model="newUser.email">
+    <label>Password:</label> <input type="password" ng-model="newUser.password">
+    <label>Password Confirmation:</label> <input type="password" ng-model="newUser.password_confirmation">
+    <input type="submit" ng-click="register(newUser)" value="Register">
+  </form>
+</fieldset>
