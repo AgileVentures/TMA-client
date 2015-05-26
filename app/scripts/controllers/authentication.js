@@ -14,7 +14,7 @@ app.controller('AuthenticationController', function ($scope, $location, Authenti
     AuthenticationService.login(user).then(
       function(){
         $scope.current_user = AuthenticationService.current_user();
-        $location.path('/menu');
+        $location.path('/');
       },
       function(message){
         $scope.user.errorMessage = message;
@@ -26,13 +26,12 @@ app.controller('AuthenticationController', function ($scope, $location, Authenti
     AuthenticationService.register(newUser).then(
       function(){
         $scope.current_user = AuthenticationService.current_user();
-        $location.path('/menu');
+        $location.path('/');
       },
       function(message){
         $scope.newUser.errorMessages = message;
       })
   }
-
 
 });
 

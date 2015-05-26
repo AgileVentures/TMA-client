@@ -49,16 +49,16 @@ app.config(function ($routeProvider) {
     });
 });
 
+app.config(function ($httpProvider) {
+  $httpProvider.interceptors.push('authInterceptor');
+});
 
 app.run(function($rootScope, $location, AuthenticationService){
-  var routePermissions = ['/menu']; //routes that require login
+  var routePermissions = ['']; //routes that require login. eg: ['/menu']
 
   $rootScope.$on('$routeChangeStart', function(){
     if ((routePermissions.indexOf($location.path()) != -1) && (!AuthenticationService.isLoggedIn())) {
       $location.path('/login');
     }
   })
-
 });
-
-
