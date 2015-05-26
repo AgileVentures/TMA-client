@@ -1,0 +1,8 @@
+<fieldset>
+  <form class="authenticate">
+    <div class="error-message">{{user.errorMessage}}</div>
+    <label>Email:</label> <input type="email" ng-model="user.email">
+    <label>Password:</label> <input type="password" ng-model="user.password">
+    <input type="submit" ng-click="login(user)" value="Login">
+  </form>
+</fieldset>

@@ -24,6 +24,14 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/main.html',
       controller: 'MainController'
     })
+    .when('/login', {
+      templateUrl: 'views/authentication/login.html',
+      controller: 'AuthenticationController'
+    })
+    .when('/register', {
+      templateUrl: 'views/authentication/register.html',
+      controller: 'AuthenticationController'
+    })
     .when('/about', {
       templateUrl: 'views/about.html',
       controller: 'AboutController'
@@ -39,4 +47,19 @@ app.config(function ($routeProvider) {
     .otherwise({
       redirectTo: '/'
     });
+});
+
+app.config(function ($httpProvider) {
+  $httpProvider.interceptors.push('authInterceptor');
+});
+
+//restricted paths that will redirect to '#/login' if not loggedin
+app.run(function($rootScope, $location, AuthenticationService){
+  var routePermissions = ['']; //paths that require login. eg: ['/menu']
+
+  $rootScope.$on('$routeChangeStart', function(){
+    if ((routePermissions.indexOf($location.path()) != -1) && (!AuthenticationService.isLoggedIn())) {
+      $location.path('/login');
+    }
+  })
 });
