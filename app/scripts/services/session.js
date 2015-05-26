@@ -21,7 +21,6 @@ app.service('SessionService', function($http) {
       $http.defaults.headers.common['name']  = null;
       $http.defaults.headers.common['email'] = null;
       $http.defaults.headers.common['token'] = null;
-      console.log("send delete session to BACKEND");// $http.delete('//');
     }
   }
 

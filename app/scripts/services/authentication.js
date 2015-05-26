@@ -15,7 +15,14 @@ app.service('AuthenticationService', function ($http, $q, SessionService) {
       return deferred.promise;
     },
     logout: function(){
-      SessionService.destroy();
+      $http.delete('//localhost:3000/v1/sessions')
+      .success(function(data){
+        SessionService.destroy();
+        console.log(data);   //FLASH
+      })
+      .error(function(data){
+        console.log(data);   //FLASH
+      })
     },
     register: function(newUser){
       var deferred = $q.defer();

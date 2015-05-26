@@ -55,7 +55,7 @@ app.run(function($rootScope, $location, AuthenticationService){
 
   $rootScope.$on('$routeChangeStart', function(){
     if ((routePermissions.indexOf($location.path()) != -1) && (!AuthenticationService.isLoggedIn())) {
-      $location.path('/authentication');
+      $location.path('/login');
     }
   })
 
