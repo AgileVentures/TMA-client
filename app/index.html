@@ -38,28 +38,12 @@
             <li class="nav-link"><a href="#/menu">Menu</a></li>
             <li class="nav-link"><a href="#/contact">Contact us</a></li>
             <li class="nav-link" ng-hide="isLoggedIn()"><a href="#/login">Login</a></li>
-
-            <!-- <li class="nav-link" ng-hide="isLoggedIn()"><a href="#/register">Register</a></li> -->
             <li class="nav-link more" ng-show="isLoggedIn()"><a href="">{{ current_user().name }}</a>
               <ul class="submenu">
                 <li><a href="javascript:void(0)">My Account</a></li>
                 <li><a href="" ng-click="logout()">Logout</a></li>
-                <!-- <li class="more"><a href="javascript:void(0)">Item with submenu</a>
-                  <ul class="submenu">
-                    <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
-                    <li><a href="javascript:void(0)">Another Item</a></li>
-                  </ul>
-                </li>
-                <li class="more"><a href="javascript:void(0)">Another submenu</a>
-                  <ul class="submenu">
-                    <li><a href="javascript:void(0)">Sub-submenu</a></li>
-                    <li><a href="javascript:void(0)">An Item</a></li>
-                  </ul>
-                </li> -->
               </ul>
             </li>
-            <!-- <li class="nav-link" ng-show="isLoggedIn()"><span>Logged in as: </span><a href="#/" ng-click="" >{{current_user().name}}</a></li>
-            <li class="nav-link" ng-show="isLoggedIn()"><a href="#/" ng-click="logout()">Logout</a></li> -->
             <li class="nav-link">
               <a href="#/checkout">
                 {{ basket.totalAmount() | currency}} ({{ basket.count() }} items)
@@ -73,7 +57,30 @@
       </div>
     </header>
 
-    <div ng-view></div>
+    <div class="wrapper-for-content-outside-of-footer">
+      <div ng-view></div>
+    </div>
+
+    <footer class="footer-2" role="contentinfo">
+      <div class="copyright">
+        <p>
+          Built with <i class="ionicons ion-heart" style="color: tomato"></i> by
+          <a target="_blank" href="http://www.agileventures.org">AgileVentures</a> 2015.
+        </p>
+      </div>
+
+      <div class="footer-secondary-links">
+        <ul>
+          <li><a href="javascript:void(0)">Terms and Conditions</a></li>
+          <li><a href="javascript:void(0)">Privacy Policy</a></li>
+        </ul>
+
+        <ul class="footer-social">
+          <li><a href="javascript:void(0)"> <i class="ionicons ion-social-facebook"></i></a></li>
+          <li><a href="javascript:void(0)"> <i class="ionicons ion-social-twitter"></i></a></li>
+        </ul>
+      </div>
+    </footer>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
