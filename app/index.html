@@ -8,6 +8,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -28,20 +29,43 @@
         <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
         <nav role="navigation" ng-controller="NavController" ng-cloak>
           <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
-            <li class="nav-link"><a href="#/menu">Menu</a></li>
-            <li class="nav-link"><a href="#/specials">Specials</a></li>
             <li class="nav-link logo">
               <a href="#/" class="logo">
                 <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2_dark.png" alt="Logo image">
               </a>
             </li>
-            <li class="nav-link"><a href="javascript:void(0)">Contact us</a></li>
-            <li class="nav-link"><a href="#/checkout">Checkout ({{ basket.count() }})</a></li>
-
-            <li class="nav-link" ng-hide="isLoggedIn()"><a href="#/register">Register</a></li>
+            <li class="nav-link"><a href="#/">Home</a></li>
+            <li class="nav-link"><a href="#/menu">Menu</a></li>
+            <li class="nav-link"><a href="#/contact">Contact us</a></li>
             <li class="nav-link" ng-hide="isLoggedIn()"><a href="#/login">Login</a></li>
-            <li class="nav-link" ng-show="isLoggedIn()"><span>Logged in as: </span><a href="#/" ng-click="" >{{current_user().name}}</a></li>
-            <li class="nav-link" ng-show="isLoggedIn()"><a href="#/" ng-click="logout()">Logout</a></li>
+
+            <!-- <li class="nav-link" ng-hide="isLoggedIn()"><a href="#/register">Register</a></li> -->
+            <li class="nav-link more" ng-show="isLoggedIn()"><a href="">{{ current_user().name }}</a>
+              <ul class="submenu">
+                <li><a href="javascript:void(0)">My Account</a></li>
+                <li><a href="" ng-click="logout()">Logout</a></li>
+                <!-- <li class="more"><a href="javascript:void(0)">Item with submenu</a>
+                  <ul class="submenu">
+                    <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
+                    <li><a href="javascript:void(0)">Another Item</a></li>
+                  </ul>
+                </li>
+                <li class="more"><a href="javascript:void(0)">Another submenu</a>
+                  <ul class="submenu">
+                    <li><a href="javascript:void(0)">Sub-submenu</a></li>
+                    <li><a href="javascript:void(0)">An Item</a></li>
+                  </ul>
+                </li> -->
+              </ul>
+            </li>
+            <!-- <li class="nav-link" ng-show="isLoggedIn()"><span>Logged in as: </span><a href="#/" ng-click="" >{{current_user().name}}</a></li>
+            <li class="nav-link" ng-show="isLoggedIn()"><a href="#/" ng-click="logout()">Logout</a></li> -->
+            <li class="nav-link">
+              <a href="#/checkout">
+                {{ basket.totalAmount() | currency}} ({{ basket.count() }} items)
+                <i class="ionicons ion-ios-cart-outline"></i>
+              </a>
+            </li>
           </ul>
         </nav>
 
