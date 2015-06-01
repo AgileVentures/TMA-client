@@ -4,7 +4,7 @@
     <div class="cards">
       <div ng-repeat="menu_item in menu.items" class="card">
         <div class="card-image">
-          <img ng-src="http://lorempixel.com/960/450/food/{{$index}}" alt="">
+          <img ng-src="{{menu_item.image_thumb}}" alt="">
         </div>
         <div class="card-header">
   	      {{menu_item.name}}
