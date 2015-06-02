@@ -7,10 +7,10 @@ $large-screen-up: new-breakpoint(min-width $large-screen 8);
 // Uncomment this for a sticky footer.
 
 .wrapper-for-content-outside-of-footer {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
+  height: auto;
   margin: 0 auto -4em;
+  min-height: 100%;
+  // height: 100%;
 }
 
 html, body {
@@ -23,7 +23,7 @@ html, body {
 }
 
 .footer-2, .wrapper-for-content-outside-of-footer:after {
-  height: 17em;
+  height: 10em;
 
   @include media($large-screen) {
     height: 4em;

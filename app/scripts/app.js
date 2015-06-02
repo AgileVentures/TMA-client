@@ -15,7 +15,8 @@ var app = angular.module('tmaClientApp', [
   'ngRoute',
   'ngResource',
   'ngSanitize',
-  'ngTouch'
+  'ngTouch',
+  'angular-loading-bar'
 ]);
 
 app.config(function ($routeProvider) {

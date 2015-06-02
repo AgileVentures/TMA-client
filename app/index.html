@@ -9,6 +9,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -38,7 +39,7 @@
             <li class="nav-link"><a href="#/menu">Menu</a></li>
             <li class="nav-link"><a href="#/contact">Contact us</a></li>
             <li class="nav-link" ng-hide="isLoggedIn()"><a href="#/login">Login</a></li>
-            <li class="nav-link more" ng-show="isLoggedIn()"><a href="">{{ current_user().name }}</a>
+            <li class="nav-link more" ng-show="isLoggedIn()"><a href="">{{ currentUser().name }}</a>
               <ul class="submenu">
                 <li><a href="javascript:void(0)">My Account</a></li>
                 <li><a href="" ng-click="logout()">Logout</a></li>
@@ -101,6 +102,7 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/ngcart/dist/ngCart.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
