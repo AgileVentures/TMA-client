@@ -10,7 +10,6 @@
 app.controller('AuthenticationController', function ($scope, $location, AuthenticationService) {
 
   $scope.user = {};
-  // $scope.user.errorMessage =
   $scope.login = function(user){
     AuthenticationService.login(user).then(
       function(){
@@ -18,7 +17,7 @@ app.controller('AuthenticationController', function ($scope, $location, Authenti
         $location.path('/');
       },
       function(message){
-        $scope.user.errorMessage = message;
+        $scope.user.errorMessages = message;
       });
   };
 
@@ -35,6 +34,6 @@ app.controller('AuthenticationController', function ($scope, $location, Authenti
   };
 
   $scope.errors = function(user) {
-    return typeof(user.errorMessage) !== "undefined";
+    return typeof(user.errorMessages) !== 'undefined';
   };
 });

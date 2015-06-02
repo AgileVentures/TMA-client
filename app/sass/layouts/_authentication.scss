@@ -1,0 +1,48 @@
+.authenticate {
+  @include outer-container;
+  margin: 80px auto;
+
+  form {
+    @include span-columns(4);
+    @include shift(4);
+    .input {
+      display: block;
+      font-family: "proxima-nova", "proxima-nova", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+      font-size: 16px;
+
+      input {
+        @include box-sizing(border-box);
+        @include transition(border-color);
+        background-color: #fff;
+        border-radius: 2px;
+        border: 1px solid #ddd;
+        box-shadow: none;
+        font-family: "proxima-nova", "proxima-nova", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+        font-size: 16px;
+        margin-bottom: 21px;
+        padding: 14px;
+        resize: vertical;
+        width: 100%;
+      }
+    }
+
+    .submit-input {
+      @include box-sizing(border-box);
+      @include transition(border-color);
+      border-radius: 2px;
+      float: left;
+      margin: 14px 0 0;
+    }
+
+    .additional-links {
+      float: right;
+      margin: 14px 0 0;
+      padding-top: .9em;
+
+      a {
+        color: #999;
+        margin-left: 14px;
+      }
+    }
+  }
+}
