@@ -8,11 +8,11 @@ app.service('SessionStoreService', function ($window) {
       $window.sessionStorage.token = token;
     },
     getUser: function() {
-      if (!$window.sessionStorage.name) return null;
+      if (!$window.sessionStorage.name) { return null; }
       return {
         name: $window.sessionStorage.name,
         email: $window.sessionStorage.email
-      }
+      };
     },
     getToken: function() {
       return $window.sessionStorage.token;
@@ -20,8 +20,8 @@ app.service('SessionStoreService', function ($window) {
     destroy: function(){
       delete $window.sessionStorage.name;
       delete $window.sessionStorage.email;
-      delete $window.sessionStorage.token
+      delete $window.sessionStorage.token;
     }
-  }
+  };
 
 });

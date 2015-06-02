@@ -11,7 +11,7 @@ app.service('AuthenticationService', function ($http, $q, SessionStoreService) {
         })
         .error(function(data){
           deferred.reject(data.message);
-        })
+        });
       return deferred.promise;
     },
     logout: function(){
@@ -21,7 +21,7 @@ app.service('AuthenticationService', function ($http, $q, SessionStoreService) {
       })
       .error(function(data){
         SessionStoreService.destroy();
-      })
+      });
     },
     register: function(newUser){
       var deferred = $q.defer();
@@ -32,15 +32,14 @@ app.service('AuthenticationService', function ($http, $q, SessionStoreService) {
         })
         .error(function(data){
           deferred.reject(data.message);
-        })
+        });
       return deferred.promise;
     },
     isLoggedIn: function(){
       return (SessionStoreService.getToken() ? true : false);
     },
-    current_user: function(){
+    currentUser: function(){
       return SessionStoreService.getUser();
     }
-
-  }
+  };
 });

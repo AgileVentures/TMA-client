@@ -4,6 +4,6 @@ app.controller('NavController', function ($scope, Basket, AuthenticationService)
   $scope.basket = Basket;
 
   $scope.isLoggedIn = AuthenticationService.isLoggedIn;
-  $scope.current_user = AuthenticationService.current_user;
+  $scope.currentUser = AuthenticationService.currentUser;
   $scope.logout = AuthenticationService.logout;
 });

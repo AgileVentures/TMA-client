@@ -5,13 +5,13 @@ app.factory('authInterceptor', function ($q, SessionStoreService) {
     request: function (config) {
       config.headers = config.headers || {};
       if (SessionStoreService.getToken()) {
-        config.headers['token'] = SessionStoreService.getToken();
+        config.headers.token = SessionStoreService.getToken();
       }
       return config;
     },
     response: function (response) {
       if (response.status === 403) {
-        SessionStoreService.destroy()
+        SessionStoreService.destroy();
       }
       return response || $q.when(response);
     }
