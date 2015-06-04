@@ -1,7 +1,14 @@
 'use strict';
 
-app.factory('Menu', function($resource) {
-  return $resource('//tma-develop.herokuapp.com/v1/menus', null, {
-    'getMenus': { methods: 'GET', isArray: false }
+app.factory('Menu', function($resource) {  
+  var baseUri = '//localhost:3000';
+  // var baseUri = '//tma-develop.herokuapp.com';
+  return $resource( baseUri + '/v1/menus/:id', {
+    id: '@_id'
+  }, {
+    'getMenus': {
+      methods: 'GET',
+      isArray: false
+    }
   });
 });

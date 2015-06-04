@@ -17,7 +17,8 @@ describe('Service: Menu', function() {
   beforeEach(module('tmaClientApp'));
 
   var httpBackend;
-  var baseUri = '//tma-develop.herokuapp.com';
+  var baseUri = '//localhost:3000';
+  // var baseUri = '//tma-develop.herokuapp.com';
   var data = {
     'date_range': 'someDateRange',
     'menus': [{

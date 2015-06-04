@@ -9,7 +9,7 @@
         <div class="card-header">
   	      {{menu_item.name}}
           <small class="price">{{menu_item.price | currency}}</small>
-          <button class="add-to-cart" ng-click="basket.add(menu_item)">Add to cart</button>
+          <button class="add-to-cart" ng-click="basket.add(menu_item, menu.id)">Add to cart</button>
         </div>
         <div class="card-copy">
           <p>{{menu_item.description}}</p>
