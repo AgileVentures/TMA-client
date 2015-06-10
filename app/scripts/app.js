@@ -19,7 +19,7 @@ var app = angular.module('tmaClientApp', [
   'angular-loading-bar'
 ]);
 
-app.config(function ($routeProvider) {
+app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'views/main.html',
@@ -50,15 +50,20 @@ app.config(function ($routeProvider) {
     });
 });
 
-app.config(function ($httpProvider) {
+app.constant('CONFIG', {
+  'BASE_URI': '//localhost:3000',
+  // 'BASE_URI': '//tma-develop.herokuapp.com',
+});
+
+app.config(function($httpProvider) {
   $httpProvider.interceptors.push('authInterceptor');
 });
 
 //restricted paths that will redirect to '#/login' if not loggedin
-app.run(function($rootScope, $location, AuthenticationService){
+app.run(function($rootScope, $location, AuthenticationService) {
   var routePermissions = ['']; //paths that require login. eg: ['/menu']
 
-  $rootScope.$on('$routeChangeStart', function(){
+  $rootScope.$on('$routeChangeStart', function() {
     if ((routePermissions.indexOf($location.path()) !== -1) && (!AuthenticationService.isLoggedIn())) {
       $location.path('/login');
     }

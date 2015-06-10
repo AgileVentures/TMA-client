@@ -7,10 +7,8 @@
  * # order
  * Service in the tmaClientApp.
  */
-app.factory('Order', function($resource) {
-  var baseUri = '//localhost:3000';
-  // var baseUri = '//tma-develop.herokuapp.com';
-  return $resource( baseUri + '/v1/orders/:id', {
+app.factory('Order', function($resource, CONFIG) {
+  return $resource( CONFIG.BASE_URI + '/v1/orders/:id', {
     id: '@_id'
   }, {
     create: {
