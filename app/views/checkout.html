@@ -1,34 +1,45 @@
 <section class="checkout">
   <h1>Checkout</h1>
-  <div class="order_items" ng-show="basket.count() > 0">
-    <table>
-      <thead>
-        <th>Item Name</th>
-        <th>Item Price</th>
-        <th>Item Quantity</th>
-        <th>Subtotal</th>
-        <th></th>
-      </thead>
-      <tbody>
-        <tr ng-repeat="item in basket.get() track by $index">
-          <td>{{item.name}}</td>
-          <td>{{item.price | currency}}</td>
-          <td>{{item.quantity}}</td>
-          <td>{{item.quantity * item.price | currency }}</td>
-          <td><a href="" ng-click="basket.remove(item)">Remove</a></td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="5">Total {{basket.totalAmount() | currency }}</td>
-        </tr>
-      </tfoot>
-    </table>
-    <button class="btn btn-block btn-primary" ng-click="createOrder()" ng-disabled="basket.getTotalCount() < 1">
-      <i class="icon-ok icon-white" /> Submit
-    </button>
+  <div class="left">
+    <div class="order_items" ng-show="basket.count() > 0">
+      <table>
+        <thead>
+          <th></th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in basket.get() track by $index">
+            <td>
+              <img class="product-img" src="{{item.image_thumb}}" alt="">
+            </td>
+            <td>{{item.name}}</td>
+            <td>
+              <div class="input">
+                <input placeholder="Qty" required="required" aria-label="Qty" type="text" ng-model="item.quantity">
+              </div>
+            </td>
+            <td>{{item.quantity * item.price | currency }}</td>
+            <td><a href="" ng-click="basket.remove(item)"><i class="ionicons ion-ios-close-outline" style="color: tomato;"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div ng-show="basket.count() == 0">
+      <p> No items in basket!</p>
+    </div>
   </div>
-  <div ng-show="basket.count() == 0">
-    <p> No items in basket!</p>
+  <div class="right">
+    <div class="summary">
+      <p>Cart summary</p>
+      <p>
+        <b>Grand Total:</b> {{basket.totalAmount() | currency }}
+      </p>
+      <div class="submit-input">
+        <input type="submit" ng-click="login(user)" value="Proceed to checkout" disabled="basket.count() == 0">
+      </div>
+    </div>
   </div>
 </section>
