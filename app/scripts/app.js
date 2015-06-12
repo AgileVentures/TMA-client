@@ -41,9 +41,13 @@ app.config(function($routeProvider) {
       templateUrl: 'views/menu.html',
       controller: 'MenuController'
     })
+    .when('/cart', {
+      templateUrl: 'views/cart.html',
+      controller: 'CartController'
+    })
     .when('/checkout', {
       templateUrl: 'views/checkout.html',
-      controller: 'CheckoutCtrl'
+      controller: 'CartController'
     })
     .otherwise({
       redirectTo: '/'

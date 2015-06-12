@@ -1,11 +1,11 @@
 'use strict';
 
-describe('Controller: CheckoutCtrl', function() {
+describe('Controller: CartController', function() {
 
   // load the controller's module
   beforeEach(module('tmaClientApp'));
 
-  var CheckoutCtrl,
+  var CartController,
     rootScope,
     scope;
 
@@ -14,7 +14,7 @@ describe('Controller: CheckoutCtrl', function() {
     rootScope = $rootScope;
     scope = $rootScope.$new();
 
-    CheckoutCtrl = $controller('CheckoutCtrl', {
+    CartController = $controller('CartController', {
       $scope: scope,
     });
   }));

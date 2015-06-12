@@ -1,5 +1,5 @@
-<section class="checkout">
-  <h1>Checkout</h1>
+<section class="shopping-cart">
+  <h1>Cart</h1>
   <div class="left">
     <div class="order_items" ng-show="basket.count() > 0">
       <table>
@@ -13,7 +13,7 @@
         <tbody>
           <tr ng-repeat="item in basket.get() track by $index">
             <td>
-              <img class="product-img" src="{{item.image_thumb}}" alt="">
+              <img class="product-img" ng-src="{{item.image_thumb}}" alt="">
             </td>
             <td>{{item.name}}</td>
             <td>
@@ -28,7 +28,7 @@
       </table>
     </div>
     <div ng-show="basket.count() == 0">
-      <p> No items in basket!</p>
+      <p> No items in your cart! <a href="#/menu">View Menu</a></p>
     </div>
   </div>
   <div class="right">
@@ -38,7 +38,7 @@
         <b>Grand Total:</b> {{basket.totalAmount() | currency }}
       </p>
       <div class="submit-input">
-        <input type="submit" ng-click="login(user)" value="Proceed to checkout" disabled="basket.count() == 0">
+        <input type="submit" ng-click="login(user)" value="Proceed to checkout" ng-disabled="{{isDisabled}}">
       </div>
     </div>
   </div>

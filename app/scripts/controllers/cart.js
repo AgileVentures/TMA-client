@@ -1,9 +1,11 @@
 'use strict';
 
-app.controller('CheckoutCtrl', function($scope, Basket, Order, AuthenticationService) {
+app.controller('CartController', function($scope, Basket, Order, AuthenticationService) {
   $scope.basket = Basket;
+  $scope.isDisabled = $scope.basket.count() === 0;
   $scope.currentUser = AuthenticationService.currentUser();
 
+  console.log('Disabled: ', $scope.isDisabled);
   $scope.createOrder = function() {
     console.log('Building the order...');
     var orderItems = [];
