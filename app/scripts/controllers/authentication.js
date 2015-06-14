@@ -7,14 +7,18 @@
  * # SessionController
  * Controller of the tmaClientApp
  */
-app.controller('AuthenticationController', function ($scope, $location, AuthenticationService) {
+app.controller('AuthenticationController', function ($scope, $location, AuthenticationService, Basket) {
 
   $scope.user = {};
   $scope.login = function(user){
     AuthenticationService.login(user).then(
       function(){
         $scope.currentUser = AuthenticationService.currentUser();
-        $location.path('/');
+        if (Basket.count() > 0) {
+          $location.path('/confirm-order');
+        } else {
+          $location.path('/menu');
+        }
       },
       function(message){
         $scope.user.errorMessages = message;

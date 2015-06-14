@@ -47,7 +47,11 @@ app.config(function($routeProvider) {
     })
     .when('/checkout', {
       templateUrl: 'views/checkout.html',
-      controller: 'CartController'
+      controller: 'CheckoutController'
+    })
+    .when('/confirm-order', {
+      templateUrl: 'views/confirm-order.html',
+      controller: 'OrderController'
     })
     .otherwise({
       redirectTo: '/'
@@ -68,7 +72,7 @@ app.run(function($rootScope, $location, AuthenticationService) {
   var routePermissions = ['']; //paths that require login. eg: ['/menu']
 
   $rootScope.$on('$routeChangeStart', function() {
-    if ((routePermissions.indexOf($location.path()) !== -1) && (!AuthenticationService.isLoggedIn())) {
+    if ((routePermissions.indexOf($location.path()) !== -1) && (!AuthenticationService.isLoggedIn()) && ($location.path() !== '')) {
       $location.path('/login');
     }
   });
