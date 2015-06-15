@@ -59,8 +59,8 @@ app.config(function($routeProvider) {
 });
 
 app.constant('CONFIG', {
-  'BASE_URI': '//localhost:3000',
-  // 'BASE_URI': '//tma-develop.herokuapp.com',
+  // 'BASE_URI': '//localhost:3000',
+  'BASE_URI': '//tma-develop.herokuapp.com',
 });
 
 app.config(function($httpProvider) {
