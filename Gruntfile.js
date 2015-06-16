@@ -383,6 +383,11 @@ module.exports = function (grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
+        }, {
+          expand: true,
+          cwd: 'bower_components/ionicons/fonts',
+          dest: '<%= yeoman.dist %>/fonts',
+          src: ['*.{eot,svg,ttf,woff}']
         }]
       },
       styles: {
