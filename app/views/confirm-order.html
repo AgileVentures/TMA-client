@@ -1,0 +1,41 @@
+<section class="checkout">
+  <h4>Hi, {{currentUser.name}}</h4>
+  <p>Summary of your order.</p>
+  <div class="left">
+    <div class="order_items" ng-show="basket.count() > 0">
+      <table>
+        <thead>
+          <th></th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in basket.get() track by $index">
+            <td>
+              <img class="product-img" ng-src="{{item.image_thumb}}" alt="">
+            </td>
+            <td>{{item.name}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.quantity * item.price | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div ng-if="errors(newOrder)" class="flash-error">
+      <span>{{newOrder.errorMessages}}</span>
+    </div>
+  </div>
+  <div class="right">
+    <div class="summary">
+      <p>Summary</p>
+      <p>
+        <b>Grand Total:</b> {{basket.totalAmount() | currency }}
+      </p>
+      <div class="submit-input">
+        <input type="submit" ng-click="createOrder()" value="Place Order">
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: CheckoutController', function () {
+describe('Controller: OrderController', function () {
 
   // load the controller's module
   beforeEach(module('tmaClientApp'));
 
-  var CheckoutController,
+  var OrderController,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    CheckoutController = $controller('CheckoutController', {
+    OrderController = $controller('OrderController', {
       $scope: scope
     });
   }));

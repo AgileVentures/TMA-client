@@ -1,10 +1,34 @@
-<fieldset>
-  <form class="authenticate">
-    <div ng-repeat="errorMessage in newUser.errorMessages" class="error-message">{{errorMessage}}</div>
-    <label>Name:</label> <input type="text" ng-model="newUser.name">
-    <label>Email:</label> <input type="email" ng-model="newUser.email">
-    <label>Password:</label> <input type="password" ng-model="newUser.password">
-    <label>Password Confirmation:</label> <input type="password" ng-model="newUser.password_confirmation">
-    <input type="submit" ng-click="register(newUser)" value="Register">
+<div class="authenticate">
+  <form>
+    <div ng-if="errors(newUser)" class="flash-error">
+      <span>Please check the following:</span>
+      <ul>
+        <li ng-repeat="errorMessage in newUser.errorMessages">{{errorMessage}}</li>
+      </ul>
+    </div>
+
+    <div class="input">
+      <input placeholder="Name" required="required" aria-label="Name" type="text" ng-model="newUser.name">
+    </div>
+
+    <div class="input">
+      <input placeholder="Email" required="required" aria-label="Email" type="email" ng-model="newUser.email">
+    </div>
+
+    <div class="input">
+      <input placeholder="Password" required="required" aria-label="Password" type="password" ng-model="newUser.password">
+    </div>
+
+    <div class="input">
+      <input placeholder="Password Confirmation" required="required" aria-label="Password Confirmation" type="password" ng-model="newUser.password_confirmation">
+    </div>
+
+    <div class="submit-input">
+      <input type="submit" ng-click="register(newUser)" value="Register">
+    </div>
+
+    <div class="additional-links">
+      <a href="#/login">Login</a>
+    </div>
   </form>
-</fieldset>
+</div>

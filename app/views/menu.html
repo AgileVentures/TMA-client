@@ -4,12 +4,13 @@
     <div class="cards">
       <div ng-repeat="menu_item in menu.items" class="card">
         <div class="card-image">
-          <img ng-src="http://lorempixel.com/960/450/food/{{$index}}" alt="">
+          <img ng-src="{{menu_item.image_thumb}}" alt="">
         </div>
         <div class="card-header">
   	      {{menu_item.name}}
           <small class="price">{{menu_item.price | currency}}</small>
-          <button class="add-to-cart" ng-click="basket.add(menu_item)">Add to cart</button>
+          <button ng-if="menu_item.status == 'active'" class="add-to-cart" ng-click="basket.add(menu_item, menu.id)">Add to cart</button>
+          <button ng-if="menu_item.status == 'inactive'" class="add-to-cart" disabled>Not available</button>
         </div>
         <div class="card-copy">
           <p>{{menu_item.description}}</p>

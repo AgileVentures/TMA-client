@@ -17,7 +17,6 @@ describe('Service: Menu', function() {
   beforeEach(module('tmaClientApp'));
 
   var httpBackend;
-  var baseUri = '//tma-develop.herokuapp.com';
   var data = {
     'date_range': 'someDateRange',
     'menus': [{
@@ -29,15 +28,16 @@ describe('Service: Menu', function() {
   };
 
   // instantiate service
-  var mockMenu;
-  beforeEach(inject(function($httpBackend, Menu) {
+  var mockMenu, config;
+  beforeEach(inject(function($httpBackend, Menu, CONFIG) {
     httpBackend = $httpBackend;
     mockMenu = Menu;
+    config = CONFIG;
   }));
 
   describe('getMenus', function() {
     it('should request menus from the API', function() {
-      httpBackend.expect('GET', baseUri + '/v1/menus').respond(data);
+      httpBackend.expect('GET', config.BASE_URI + '/v1/menus').respond(data);
       var response = mockMenu.getMenus();
       httpBackend.flush();
       expect(response).toEqualData(data);

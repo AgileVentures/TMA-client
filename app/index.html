@@ -8,6 +8,8 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -28,28 +30,56 @@
         <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
         <nav role="navigation" ng-controller="NavController" ng-cloak>
           <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
-            <li class="nav-link"><a href="#/menu">Menu</a></li>
-            <li class="nav-link"><a href="#/specials">Specials</a></li>
             <li class="nav-link logo">
               <a href="#/" class="logo">
                 <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2_dark.png" alt="Logo image">
               </a>
             </li>
-            <li class="nav-link"><a href="javascript:void(0)">Contact us</a></li>
-            <li class="nav-link"><a href="#/checkout">Checkout ({{ basket.count() }})</a></li>
-
-            <li class="nav-link" ng-hide="isLoggedIn()"><a href="#/register">Register</a></li>
+            <li class="nav-link"><a href="#/">Home</a></li>
+            <li class="nav-link"><a href="#/menu">Menu</a></li>
+            <li class="nav-link"><a href="#/contact">Contact us</a></li>
             <li class="nav-link" ng-hide="isLoggedIn()"><a href="#/login">Login</a></li>
-            <li class="nav-link" ng-show="isLoggedIn()"><span>Logged in as: </span><a href="#/" ng-click="" >{{current_user().name}}</a></li>
-            <li class="nav-link" ng-show="isLoggedIn()"><a href="#/" ng-click="logout()">Logout</a></li>
+            <li class="nav-link more" ng-show="isLoggedIn()"><a href="">{{ currentUser().name }}</a>
+              <ul class="submenu">
+                <li><a href="javascript:void(0)">My Account</a></li>
+                <li><a href="" ng-click="logout()">Logout</a></li>
+              </ul>
+            </li>
+            <li class="nav-link">
+              <a href="#/cart">
+                {{ basket.totalAmount() | currency}} ({{ basket.count() }} items)
+                <i class="ionicons ion-ios-cart-outline"></i>
+              </a>
+            </li>
           </ul>
         </nav>
-
-
       </div>
     </header>
 
-    <div ng-view></div>
+    <div class="wrapper-for-content-outside-of-footer">
+      <div ng-view></div>
+    </div>
+
+    <footer class="footer-2" role="contentinfo">
+      <div class="copyright">
+        <p>
+          Built with <i class="ionicons ion-heart" style="color: tomato"></i> by
+          <a target="_blank" href="http://www.agileventures.org">AgileVentures</a> 2015.
+        </p>
+      </div>
+
+      <div class="footer-secondary-links">
+        <ul>
+          <li><a href="javascript:void(0)">Terms and Conditions</a></li>
+          <li><a href="javascript:void(0)">Privacy Policy</a></li>
+        </ul>
+
+        <ul class="footer-social">
+          <li><a href="javascript:void(0)"> <i class="ionicons ion-social-facebook"></i></a></li>
+          <li><a href="javascript:void(0)"> <i class="ionicons ion-social-twitter"></i></a></li>
+        </ul>
+      </div>
+    </footer>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -72,6 +102,7 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/ngcart/dist/ngCart.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -81,13 +112,16 @@
         <script src="scripts/services/authentication.js"></script>
         <script src="scripts/services/authInterceptor.js"></script>
         <script src="scripts/services/menu.js"></script>
+        <script src="scripts/services/order.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/authentication.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/menu.js"></script>
-        <script src="scripts/controllers/checkout.js"></script>
+        <script src="scripts/controllers/cart.js"></script>
         <script src="scripts/services/basket.js"></script>
         <script src="scripts/controllers/nav.js"></script>
+        <script src="scripts/controllers/checkout.js"></script>
+        <script src="scripts/controllers/order.js"></script>
         <!-- endbuild -->
 </body>
 </html>

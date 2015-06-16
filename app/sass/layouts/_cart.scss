@@ -1,0 +1,51 @@
+.checkout {
+  $font-size: .85em;
+  font-family: "proxima-nova", "proxima-nova", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+
+  .left {
+    @include span-columns(9);
+
+    .product-img {
+      width: 50px;
+    }
+
+    .input {
+      display: block;
+      font-size: 16px;
+
+      input {
+        @include box-sizing(border-box);
+        @include transition(border-color);
+        background-color: #fff;
+        border-radius: 2px;
+        border: 1px solid #ddd;
+        box-shadow: none;
+        font-size: 16px;
+        margin: 0;
+        padding: 14px;
+        resize: vertical;
+        width: 50%;
+      }
+    }
+  }
+
+  .right {
+    @include span-columns(3);
+    margin: 0;
+
+    p {
+      font-size: $font-size;
+    }
+
+    .summary {
+      background-color: #f7f7f7;
+      padding: 15px;
+      width: 100%;
+    }
+
+    .submit-input {
+      font-size: $font-size;
+      font-style: normal;
+    }
+  }
+}

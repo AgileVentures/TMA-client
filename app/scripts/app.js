@@ -15,10 +15,11 @@ var app = angular.module('tmaClientApp', [
   'ngRoute',
   'ngResource',
   'ngSanitize',
-  'ngTouch'
+  'ngTouch',
+  'angular-loading-bar'
 ]);
 
-app.config(function ($routeProvider) {
+app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'views/main.html',
@@ -40,26 +41,39 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/menu.html',
       controller: 'MenuController'
     })
+    .when('/cart', {
+      templateUrl: 'views/cart.html',
+      controller: 'CartController'
+    })
     .when('/checkout', {
       templateUrl: 'views/checkout.html',
-      controller: 'CheckoutCtrl'
+      controller: 'CheckoutController'
+    })
+    .when('/confirm-order', {
+      templateUrl: 'views/confirm-order.html',
+      controller: 'OrderController'
     })
     .otherwise({
       redirectTo: '/'
     });
 });
 
-app.config(function ($httpProvider) {
+app.constant('CONFIG', {
+  // 'BASE_URI': '//localhost:3000',
+  'BASE_URI': '//tma-develop.herokuapp.com',
+});
+
+app.config(function($httpProvider) {
   $httpProvider.interceptors.push('authInterceptor');
 });
 
 //restricted paths that will redirect to '#/login' if not loggedin
-app.run(function($rootScope, $location, AuthenticationService){
+app.run(function($rootScope, $location, AuthenticationService) {
   var routePermissions = ['']; //paths that require login. eg: ['/menu']
 
-  $rootScope.$on('$routeChangeStart', function(){
-    if ((routePermissions.indexOf($location.path()) != -1) && (!AuthenticationService.isLoggedIn())) {
+  $rootScope.$on('$routeChangeStart', function() {
+    if ((routePermissions.indexOf($location.path()) !== -1) && (!AuthenticationService.isLoggedIn()) && ($location.path() !== '')) {
       $location.path('/login');
     }
-  })
+  });
 });

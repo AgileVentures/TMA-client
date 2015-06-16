@@ -11,11 +11,12 @@ app.factory('Basket', function() {
       return basket;
     },
 
-    add: function(item) {
+    add: function(item, menuId) {
       if (basket[item.name]) {
         basket[item.name].quantity += 1;
       } else {
         basket[item.name] = item;
+        basket[item.name].menu = menuId;
         basket[item.name].quantity = 1;
         count += 1;
       }
@@ -42,6 +43,11 @@ app.factory('Basket', function() {
 
     quantityOf: function(name) {
       return basket[name].quantity;
+    },
+
+    clear: function() {
+      basket = {};
+      count = 0;
     }
   };
 });

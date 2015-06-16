@@ -1,34 +1,36 @@
 <section class="checkout">
-  <h1>Checkout</h1>
-  <div class="order_items" ng-show="basket.count() > 0">
-    <table>
-      <thead>
-        <th>Item Name</th>
-        <th>Item Price</th>
-        <th>Item Quantity</th>
-        <th>Subtotal</th>
-        <th></th>
-      </thead>
-      <tbody>
-        <tr ng-repeat="item in basket.get() track by $index">
-          <td>{{item.name}}</td>
-          <td>{{item.price | currency}}</td>
-          <td>{{item.quantity}}</td>
-          <td>{{item.quantity * item.price | currency }}</td>
-          <td><a href="" ng-click="basket.remove(item)">Remove</a></td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="5">Total {{basket.totalAmount() | currency }}</td>
-        </tr>
-      </tfoot>
-    </table>
-    <button class="btn btn-block btn-primary" ng-click="basket.checkout()" ng-disabled="basket.getTotalCount() < 1">
-      <i class="icon-ok icon-white" /> Submit
-    </button>
-  </div>
   <div ng-show="basket.count() == 0">
-    <p> No items in basket!</p>
+    <p> No items in your cart! <a href="#/menu">View Menu</a></p>
+  </div>
+  <div class="authenticate" ng-if="basket.count() > 0">
+    <form>
+      <p>Returning customer? <a href="#/login">Click here to login</a></p>
+      <div ng-if="errors(user)" class="flash-error">
+        <span>Please fill out this form to complete your order:</span>
+        <ul>
+          <li ng-repeat="errorMessage in user.errorMessages">{{errorMessage}}</li>
+        </ul>
+      </div>
+
+      <div class="input">
+        <input placeholder="Name" required="required" aria-label="Name" type="text" ng-model="user.name">
+      </div>
+
+      <div class="input">
+        <input placeholder="Email" required="required" aria-label="Email" type="email" ng-model="user.email">
+      </div>
+
+      <div class="input">
+        <input placeholder="Password" required="required" aria-label="Password" type="password" ng-model="user.password">
+      </div>
+
+      <div class="input">
+        <input placeholder="Password Confirmation" required="required" aria-label="Password Confirmation" type="password" ng-model="user.password_confirmation">
+      </div>
+
+      <div class="submit-input">
+        <input type="submit" ng-click="register(user)" value="Proceed with order">
+      </div>
+    </form>
   </div>
 </section>

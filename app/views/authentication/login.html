@@ -1,8 +1,24 @@
-<fieldset>
-  <form class="authenticate">
-    <div class="error-message">{{user.errorMessage}}</div>
-    <label>Email:</label> <input type="email" ng-model="user.email">
-    <label>Password:</label> <input type="password" ng-model="user.password">
-    <input type="submit" ng-click="login(user)" value="Login">
+<div class="authenticate">
+  <form>
+    <div ng-if="errors(user)" class="flash-error">
+      <span>{{user.errorMessages}}</span>
+    </div>
+
+    <div class="input">
+      <input placeholder="Email" required="required" aria-label="Email" type="email" ng-model="user.email">
+    </div>
+
+    <div class="input">
+      <input placeholder="Password" required="required" aria-label="Password" type="password" ng-model="user.password">
+    </div>
+
+    <div class="submit-input">
+      <input type="submit" ng-click="login(user)" value="Login">
+    </div>
+
+    <div class="additional-links">
+      <a href="#/register">Register</a>
+      <a href="javascript:void(0)">Forgot password</a>
+    </div>
   </form>
-</fieldset>
+</div>
