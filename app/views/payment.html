@@ -1,0 +1,32 @@
+<section class="checkout">
+  <h4>Hi, {{currentUser.name}}</h4>
+
+  <div ng-show="currentOrder">
+    <p>Your order was successfully placed.</p>
+    <p>Please proceed with Payment to finalize order.</p>
+  </div>
+
+  <div class="left">
+    <div class="order_items" ng-show="currentOrder">
+    <h4>Order Details:</h4>
+      <p>Order ID: {{currentOrder.id}}</p>
+      <p>Order status: {{currentOrder.status}}</p>
+    </div>
+
+  </div>
+  <div class="right">
+    <div class="summary" ng-show="orderTotalAmount">
+      <p>Summary</p>
+      <p>
+        <b>Grand Total:</b> {{orderTotalAmount | currency }}
+      </p>
+      <div class="submit-input">
+        <input type="submit" ng-click="createPayment()" value="Place Payment">
+      </div>
+    </div>
+  </div>
+
+   <div ng-if="currentOrderError" class="flash-error">
+    <span>{{currentOrderError}}</span>
+  </div>
+</section>

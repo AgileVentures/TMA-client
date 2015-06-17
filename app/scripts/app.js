@@ -54,9 +54,18 @@ app.config(function($routeProvider) {
       templateUrl: 'views/confirm-order.html',
       controller: 'OrderController'
     })
+    .when('/payment/:id', {
+      templateUrl: 'views/payment.html',
+      controller: 'PaymentController'
+    })
     .otherwise({
       redirectTo: '/'
     });
+});
+
+app.constant('CONFIG', {
+  // 'BASE_URI': '//localhost:3000',
+  'BASE_URI': '//tma-develop.herokuapp.com',
 });
 
 app.config(function($httpProvider) {
