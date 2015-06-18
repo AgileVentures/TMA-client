@@ -18,6 +18,7 @@ var app = angular.module('tmaClientApp', [
   'ngTouch',
   'angular-loading-bar',
   'config'
+  'angularPayments'
 ]);
 
 app.config(function($routeProvider) {
@@ -66,6 +67,7 @@ app.config(function($routeProvider) {
 app.constant('CONFIG', {
   // 'BASE_URI': '//localhost:3000',
   'BASE_URI': '//tma-develop.herokuapp.com',
+  STRIPE_PUBLISHABLE_KEY: ""
 });
 
 app.config(function($httpProvider) {

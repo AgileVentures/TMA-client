@@ -11,22 +11,30 @@
     <h4>Order Details:</h4>
       <p>Order ID: {{currentOrder.id}}</p>
       <p>Order status: {{currentOrder.status}}</p>
-    </div>
-
-  </div>
-  <div class="right">
-    <div class="summary" ng-show="orderTotalAmount">
-      <p>Summary</p>
-      <p>
-        <b>Grand Total:</b> {{orderTotalAmount | currency }}
-      </p>
-      <div class="submit-input">
-        <input type="submit" ng-click="createPayment()" value="Place Payment">
-      </div>
+      <p>Total amount: {{orderTotalAmount | currency }}</p>
     </div>
   </div>
 
    <div ng-if="currentOrderError" class="flash-error">
     <span>{{currentOrderError}}</span>
   </div>
+
+  <!-- stripe payment form -->
+  <div ng-show="currentOrder">
+    <form class="left" stripe-form="stripeCallback">
+      <div class="input">
+        <input ng-model="number" placeholder="Card Number" />
+      </div>
+      <div class="input">
+        <input ng-model="expiry" placeholder="Expiration" />
+      </div>
+      <div class="input">
+        <input ng-model="cvc" placeholder="CVC" />
+      </div>
+      <div class="submit-input">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
 </section>

@@ -15,7 +15,8 @@
     "normalize-scss": "~3.0.3",
     "ngcart": "~0.0.3-rc.2",
     "ionicons": "~2.0.1",
-    "angular-loading-bar": "~0.7.1"
+    "angular-loading-bar": "~0.7.1",
+    "angular-payments": "*"
   },
   "devDependencies": {
     "angular-mocks": "^1.3.0"
