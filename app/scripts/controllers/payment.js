@@ -7,19 +7,15 @@
  * # PaymentController
  * Controller of the tmaClientApp
  */
-app.controller('PaymentController', function ($scope, $routeParams, Order, $window, CONFIG, AuthenticationService) {
+app.controller('PaymentController', function ($scope, $routeParams, Order, $window, CONFIG, AuthenticationService, $http) {
   $scope.currentUser = AuthenticationService.currentUser();
-  $scope.currentOrder;
+  $scope.currentOrder = {};
 
+  //get order
   Order.get({id: $routeParams.id},
     function(data) {
       $scope.currentOrder = data;
-
-      var total = 0;
-      angular.forEach($scope.currentOrder.items, function(item) {
-        total += item.price * item.quantity;
-      });
-      $scope.orderTotalAmount = total;
+      $scope.orderTotalAmount = data.amount;
     },
     function(errorMessage){
       $scope.currentOrderError = "Order not found";
@@ -30,20 +26,25 @@ app.controller('PaymentController', function ($scope, $routeParams, Order, $wind
 
   // Stripe Response Handler
   $scope.stripeCallback = function (code, result) {
-      if (result.error) {
-          window.alert('it failed! error: ' + result.error.message);
-      } else {
-          result.orderId = currentOrder.id;
-          //send stripe details to API
-          $http.post(CONFIG.BASE_URI + '/v1/payment', result)
-          .success(function(data){
-            console.log(data);
-          })
-          .error(function(errorMessage){
-              console.log(errorMessage);
-          });
+    if (result.error) {
+        window.alert('it failed! error: ' + result.error.message);
+    } else {
+      var orderId = $scope.currentOrder.id;
 
+      var payment_params = {
+        stripeToken: result.id
       }
+
+      //send stripe details to API
+      $http.post(CONFIG.BASE_URI + '/v1/orders/' + orderId + '/pay', payment_params)
+      .success(function(data){
+        console.log(data);
+      })
+      .error(function(errorMessage){
+          console.log(errorMessage);
+      });
+
+    }
   };
 
 });
