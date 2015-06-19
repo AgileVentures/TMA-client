@@ -1,8 +1,21 @@
-<section class="payment">
+<div ng-show="currentOrder.errorMessage" class="flash-error">
+  <span>{{currentOrder.errorMessage}}</span>
+</div>
+
+<section ng-if="currentOrder.id" class="payment">
   <h4>Hi, {{currentUser.name}}</h4>
 
-  <div ng-show="currentOrder">
+  <div ng-if="currentOrder.status==='pending'">
     <p>Your order was successfully placed and it is in pending mode until payment is finalized.</p>
+  </div>
+
+  <div ng-if="currentOrder.status==='processed'">
+    Payment for order #{{currentOrder.id}} is complete.
+    The order can be picked up at {{currentOrder.pickupTime}}.
+  </div>
+
+  <div ng-if="currentOrder.status==='canceled'">
+    Order #{{currentOrder.id}} is canceled.
   </div>
 
   <div class="left">
@@ -10,19 +23,17 @@
     <br>
     <h4>Order Details:</h4>
       <p>Order ID: {{currentOrder.id}}</p>
-      <p>Total amount: {{orderTotalAmount | currency }}</p>
+      <p>Total amount: {{currentOrder.amount | currency }}</p>
+      <p>Order status: {{currentOrder.status}}</p>
     </div>
   </div>
 
-  <div ng-if="currentOrderError" class="flash-error">
-    <span>{{currentOrderError}}</span>
-  </div>
 
-  <!-- stripe payment form -->
-  <div class="standard-form credit-card-form" ng-show="currentOrder.pending">
+  <!-- stripe creditcard payment form -->
+  <div class="standard-form credit-card-form" ng-show="currentOrder.status=='pending'">
     <form class="left" stripe-form="stripeCallback" name="checkoutForm">
       <h3>Please proceed with payment</h3>
-      <div ng-if="currentOrder.stripeError" class="flash-error">
+      <div ng-show="currentOrder.stripeError" class="flash-error">
         <span>{{currentOrder.stripeError}}</span>
       </div>
       <div class="input">
@@ -35,14 +46,9 @@
         <input type="text" ng-model="cvc" placeholder="CVC" payments-format="cvc" name="cvc"/>
       </div>
       <div class="submit-input">
-        <button type="submit" ng-click="currentOrder.stripeError = null">Submit</button>
+        <button type="submit" ng-click="clearErrorMessages()">Submit</button>
       </div>
     </form>
-  </div>
-
-  <div ng-show="currentOrder.paymentCompleteMessage">
-    Payment is complete.
-    {{currentOrder.paymentCompleteMessage}}
   </div>
 
 </section>

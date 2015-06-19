@@ -79,7 +79,7 @@ app.run(function($rootScope, $location, AuthenticationService) {
   var routePermissions = ['']; //paths that require login. eg: ['/menu']
 
   $rootScope.$on('$routeChangeStart', function() {
-    if ((routePermissions.indexOf($location.path()) !== -1) && (!AuthenticationService.isLoggedIn()) && ($location.path() !== '')) {
+    if (($location.path().indexOf(routePermissions) !== -1) && (!AuthenticationService.isLoggedIn()) && ($location.path() !== '')) {
       $location.path('/login');
     }
   });

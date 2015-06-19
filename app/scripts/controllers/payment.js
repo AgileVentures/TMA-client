@@ -15,41 +15,51 @@ app.controller('PaymentController', function ($scope, $routeParams, Order, $wind
   //get order
   Order.get({id: $routeParams.id},
     function(data) {
-      $scope.currentOrder = data;
-      $scope.orderTotalAmount = data.amount;
-      $scope.currentOrder.pending = (data.status === 'pending');
-      console.log(data);
+      serializeCurrentOrder(data);
     },
     function(errorMessage){
-      $scope.currentOrderError = 'Order not found';
+      $scope.currentOrder.errorMessage = 'Order not found';
     }
   );
-
-  $window.Stripe.setPublishableKey(CONFIG.STRIPE_PUBLISHABLE_KEY);
 
   // Stripe Response Handler
   $scope.stripeCallback = function (code, result) {
     if (result.error) {
-        $scope.currentOrder.stripeError = result.error.message
+      $scope.currentOrder.stripeError = result.error.message
     } else {
       var orderId = $scope.currentOrder.id;
-
-      var payment_params = {
-        stripeToken: result.id
-      }
+      var payment_params = { stripeToken: result.id }
 
       //send stripe details to API
       $http.post(CONFIG.BASE_URI + '/v1/orders/' + orderId + '/pay', payment_params)
       .success(function(data){
-        $scope.currentOrder.pending = false;
-        $scope.currentOrder.paymentCompleteMessage = data;
-        console.log(data);
+        serializeCurrentOrder(data)
       })
-      .error(function(errorMessage){
-          console.log(errorMessage);
+      .error(function(data){
+        $scope.currentOrder.errorMessage = data.message || "Server error";
+        if (data.errors) {
+         $scope.currentOrder.errorMessage += ' ' + data.errors.message;
+        }
       });
-
     }
   };
+
+  $window.Stripe.setPublishableKey(CONFIG.STRIPE_PUBLISHABLE_KEY);
+
+  $scope.clearErrorMessages = function(){
+    $scope.currentOrder.errorMessage = null;
+    $scope.currentOrder.stripeError = null;
+  }
+
+  function serializeCurrentOrder(data){
+    $scope.currentOrder = {
+      id: data.id,
+      status: data.status,
+      pickupTime: data.pickup_time,
+      amount: data.amount,
+      errorMessage: null,
+      stripeError: null
+    };
+  }
 
 });
