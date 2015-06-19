@@ -2,7 +2,7 @@
   <div ng-show="basket.count() == 0">
     <p> No items in your cart! <a href="#/menu">View Menu</a></p>
   </div>
-  <div class="authenticate" ng-if="basket.count() > 0">
+  <div class="standard-form" ng-if="basket.count() > 0">
     <form>
       <p>Returning customer? <a href="#/login">Click here to login</a></p>
       <div ng-if="errors(user)" class="flash-error">

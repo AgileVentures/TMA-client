@@ -1,40 +1,48 @@
-<section class="checkout">
+<section class="payment">
   <h4>Hi, {{currentUser.name}}</h4>
 
   <div ng-show="currentOrder">
-    <p>Your order was successfully placed.</p>
-    <p>Please proceed with Payment to finalize order.</p>
+    <p>Your order was successfully placed and it is in pending mode until payment is finalized.</p>
   </div>
 
   <div class="left">
     <div class="order_items" ng-show="currentOrder">
+    <br>
     <h4>Order Details:</h4>
       <p>Order ID: {{currentOrder.id}}</p>
-      <p>Order status: {{currentOrder.status}}</p>
       <p>Total amount: {{orderTotalAmount | currency }}</p>
     </div>
   </div>
 
-   <div ng-if="currentOrderError" class="flash-error">
+  <div ng-if="currentOrderError" class="flash-error">
     <span>{{currentOrderError}}</span>
   </div>
 
   <!-- stripe payment form -->
-  <div ng-show="currentOrder">
-    <form class="left" stripe-form="stripeCallback">
-      <div class="input">
-        <input ng-model="number" placeholder="Card Number" />
+  <div class="standard-form credit-card-form" ng-show="currentOrder.pending">
+    <form class="left" stripe-form="stripeCallback" name="checkoutForm">
+      <h3>Please proceed with payment</h3>
+      <div ng-if="currentOrder.stripeError" class="flash-error">
+        <span>{{currentOrder.stripeError}}</span>
       </div>
       <div class="input">
-        <input ng-model="expiry" placeholder="Expiration" />
+        <input type="text" ng-model="number" placeholder="Card Number" payments-format="card" name="card"/>
       </div>
       <div class="input">
-        <input ng-model="cvc" placeholder="CVC" />
+        <input type="text" ng-model="expiry" placeholder="Expiration" payments-format="expiry" name="expiry"/>
+      </div>
+      <div class="input">
+        <input type="text" ng-model="cvc" placeholder="CVC" payments-format="cvc" name="cvc"/>
       </div>
       <div class="submit-input">
-        <button type="submit">Submit</button>
+        <button type="submit" ng-click="currentOrder.stripeError = null">Submit</button>
       </div>
     </form>
+  </div>
+
+  <div ng-show="currentOrder.paymentCompleteMessage">
+    Payment is complete.
+    {{currentOrder.paymentCompleteMessage}}
   </div>
 
 </section>

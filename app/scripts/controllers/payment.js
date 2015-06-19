@@ -10,15 +10,18 @@
 app.controller('PaymentController', function ($scope, $routeParams, Order, $window, CONFIG, AuthenticationService, $http) {
   $scope.currentUser = AuthenticationService.currentUser();
   $scope.currentOrder = {};
+  $scope.currentOrderError = '';
 
   //get order
   Order.get({id: $routeParams.id},
     function(data) {
       $scope.currentOrder = data;
       $scope.orderTotalAmount = data.amount;
+      $scope.currentOrder.pending = (data.status === 'pending');
+      console.log(data);
     },
     function(errorMessage){
-      $scope.currentOrderError = "Order not found";
+      $scope.currentOrderError = 'Order not found';
     }
   );
 
@@ -27,7 +30,7 @@ app.controller('PaymentController', function ($scope, $routeParams, Order, $wind
   // Stripe Response Handler
   $scope.stripeCallback = function (code, result) {
     if (result.error) {
-        window.alert('it failed! error: ' + result.error.message);
+        $scope.currentOrder.stripeError = result.error.message
     } else {
       var orderId = $scope.currentOrder.id;
 
@@ -38,6 +41,8 @@ app.controller('PaymentController', function ($scope, $routeParams, Order, $wind
       //send stripe details to API
       $http.post(CONFIG.BASE_URI + '/v1/orders/' + orderId + '/pay', payment_params)
       .success(function(data){
+        $scope.currentOrder.pending = false;
+        $scope.currentOrder.paymentCompleteMessage = data;
         console.log(data);
       })
       .error(function(errorMessage){
