@@ -1,10 +1,10 @@
 'use strict';
 
-app.service('AuthenticationService', function ($http, $q, SessionStoreService, CONFIG) {
+app.service('AuthenticationService', function ($http, $q, SessionStoreService, ENV) {
   return {
     login: function(user) {
       var deferred = $q.defer();
-      $http.post(CONFIG.BASE_URI + '/v1/sessions', user)
+      $http.post(ENV.apiUri + '/v1/sessions', user)
         .success(function(data){
           SessionStoreService.set(data.user.id, data.user.name, data.user.email, data.authentication_token.token);
           deferred.resolve();
@@ -15,7 +15,7 @@ app.service('AuthenticationService', function ($http, $q, SessionStoreService, C
       return deferred.promise;
     },
     logout: function(){
-      $http.delete(CONFIG.BASE_URI + '/v1/sessions')
+      $http.delete(ENV.apiUri + '/v1/sessions')
       .success(function(data){
         SessionStoreService.destroy();
       })
@@ -25,7 +25,7 @@ app.service('AuthenticationService', function ($http, $q, SessionStoreService, C
     },
     register: function(newUser){
       var deferred = $q.defer();
-      $http.post(CONFIG.BASE_URI + '/v1/users', newUser)
+      $http.post(ENV.apiUri + '/v1/users', newUser)
         .success(function(data){
           SessionStoreService.set(data.user.id, data.user.name, data.user.email, data.authentication_token.token);
           deferred.resolve();

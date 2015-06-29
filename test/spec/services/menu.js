@@ -28,16 +28,16 @@ describe('Service: Menu', function() {
   };
 
   // instantiate service
-  var mockMenu, config;
-  beforeEach(inject(function($httpBackend, Menu, CONFIG) {
+  var mockMenu, env;
+  beforeEach(inject(function($httpBackend, Menu, ENV) {
     httpBackend = $httpBackend;
     mockMenu = Menu;
-    config = CONFIG;
+    env = ENV;
   }));
 
   describe('getMenus', function() {
     it('should request menus from the API', function() {
-      httpBackend.expect('GET', config.BASE_URI + '/v1/menus').respond(data);
+      httpBackend.expect('GET', env.apiUri + '/v1/menus').respond(data);
       var response = mockMenu.getMenus();
       httpBackend.flush();
       expect(response).toEqualData(data);
