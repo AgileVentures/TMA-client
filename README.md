@@ -9,8 +9,8 @@
 [tma-api]: https://github.com/AgileVentures/TakeMeAway
 [iojs-install]: https://github.com/coolaj86/iojs-install-script
 
-[semaphore-badge]: https://semaphoreci.com/api/v1/projects/76fd11be-0228-455d-b92e-fa3f4608aeb0/409755/badge.svg
-[semaphore]: https://semaphoreci.com/diraulo/tma-client--2
+[semaphore-badge]: https://semaphoreci.com/api/v1/projects/a3a87934-7f5f-482b-9d5e-c75f444eb1bd/416848/badge.svg
+[semaphore]: https://semaphoreci.com/agileventures/tma-client
 [coverage-badge]: https://codeclimate.com/github/AgileVentures/TMA-client/badges/coverage.svg
 [coverage]: https://codeclimate.com/github/AgileVentures/TMA-client/coverage
 
