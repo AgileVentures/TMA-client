@@ -1,7 +1,7 @@
 'use strict';
 
-app.factory('Menu', function($resource, CONFIG) {  
-  return $resource( CONFIG.BASE_URI + '/v1/menus/:id', {
+app.factory('Menu', function($resource, ENV) {  
+  return $resource( ENV.apiUri + '/v1/menus/:id', {
     id: '@_id'
   }, {
     'getMenus': {

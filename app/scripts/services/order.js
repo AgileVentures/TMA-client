@@ -7,8 +7,8 @@
  * # order
  * Service in the tmaClientApp.
  */
-app.factory('Order', function($resource, CONFIG) {
-  return $resource( CONFIG.BASE_URI + '/v1/orders/:id', {
+app.factory('Order', function($resource, ENV) {
+  return $resource( ENV.apiUri + '/v1/orders/:id', {
     id: '@_id'
   }, {
     create: {

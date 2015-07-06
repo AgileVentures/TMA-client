@@ -16,7 +16,8 @@ var app = angular.module('tmaClientApp', [
   'ngResource',
   'ngSanitize',
   'ngTouch',
-  'angular-loading-bar'
+  'angular-loading-bar',
+  'config'
 ]);
 
 app.config(function($routeProvider) {
@@ -56,11 +57,6 @@ app.config(function($routeProvider) {
     .otherwise({
       redirectTo: '/'
     });
-});
-
-app.constant('CONFIG', {
-  // 'BASE_URI': '//localhost:3000',
-  'BASE_URI': '//tma-develop.herokuapp.com',
 });
 
 app.config(function($httpProvider) {
