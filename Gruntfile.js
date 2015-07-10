@@ -53,7 +53,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'development',
-            apiUri: '//localhost:3000'
+            apiUri: '//localhost:3000',
+            STRIPE_PUBLISHABLE_KEY: ''
           }
         }
       },
@@ -64,7 +65,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'production',
-            apiUri: '//tma-develop.herokuapp.com'
+            apiUri: '//tma-develop.herokuapp.com',
+            STRIPE_PUBLISHABLE_KEY: ''
           }
         }
       }
