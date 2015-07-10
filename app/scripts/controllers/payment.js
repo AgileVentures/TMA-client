@@ -7,7 +7,7 @@
  * # PaymentController
  * Controller of the tmaClientApp
  */
-app.controller('PaymentController', function ($scope, $routeParams, Order, $window, CONFIG, AuthenticationService, $http) {
+app.controller('PaymentController', function ($scope, $routeParams, Order, $window, ENV, AuthenticationService, $http) {
   $scope.currentUser = AuthenticationService.currentUser();
   $scope.currentOrder = {};
   $scope.currentOrderError = '';
@@ -31,7 +31,7 @@ app.controller('PaymentController', function ($scope, $routeParams, Order, $wind
       var payment_params = { stripeToken: result.id }
 
       //send stripe details to API
-      $http.post(CONFIG.BASE_URI + '/v1/orders/' + orderId + '/pay', payment_params)
+      $http.post(ENV.apiUri + '/v1/orders/' + orderId + '/pay', payment_params)
       .success(function(data){
         serializeCurrentOrder(data)
       })
@@ -44,7 +44,8 @@ app.controller('PaymentController', function ($scope, $routeParams, Order, $wind
     }
   };
 
-  $window.Stripe.setPublishableKey(CONFIG.STRIPE_PUBLISHABLE_KEY);
+  console.log(ENV);
+  $window.Stripe.setPublishableKey(ENV.STRIPE_PUBLISHABLE_KEY);
 
   $scope.clearErrorMessages = function(){
     $scope.currentOrder.errorMessage = null;

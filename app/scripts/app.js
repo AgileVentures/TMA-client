@@ -17,7 +17,7 @@ var app = angular.module('tmaClientApp', [
   'ngSanitize',
   'ngTouch',
   'angular-loading-bar',
-  'config'
+  'config',
   'angularPayments'
 ]);
 
@@ -62,12 +62,6 @@ app.config(function($routeProvider) {
     .otherwise({
       redirectTo: '/'
     });
-});
-
-app.constant('CONFIG', {
-  // 'BASE_URI': '//localhost:3000',
-  'BASE_URI': '//tma-develop.herokuapp.com',
-  STRIPE_PUBLISHABLE_KEY: ""
 });
 
 app.config(function($httpProvider) {
