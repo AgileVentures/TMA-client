@@ -70,10 +70,10 @@ app.config(function($httpProvider) {
 
 //restricted paths that will redirect to '#/login' if not loggedin
 app.run(function($rootScope, $location, AuthenticationService) {
-  var routePermissions = ['']; //paths that require login. eg: ['/menu']
+  var routePermissions = []; //paths that require login. eg: ['/menu']
 
   $rootScope.$on('$routeChangeStart', function() {
-    if (($location.path().indexOf(routePermissions) !== -1) && (!AuthenticationService.isLoggedIn()) && ($location.path() !== '')) {
+    if ( (routePermissions.indexOf($location.path()) !== -1) && (!AuthenticationService.isLoggedIn()) ) {
       $location.path('/login');
     }
   });
