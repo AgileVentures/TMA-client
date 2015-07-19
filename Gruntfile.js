@@ -54,7 +54,7 @@ module.exports = function (grunt) {
           ENV: {
             name: 'development',
             apiUri: '//localhost:3000',
-            STRIPE_PUBLISHABLE_KEY: ''
+            STRIPE_PUBLISHABLE_KEY: 'pk_test_JfwTC9il0Kt3ce4WkAFk1XkL'
           }
         }
       },
@@ -66,7 +66,7 @@ module.exports = function (grunt) {
           ENV: {
             name: 'production',
             apiUri: '//tma-develop.herokuapp.com',
-            STRIPE_PUBLISHABLE_KEY: ''
+            STRIPE_PUBLISHABLE_KEY: 'pk_test_JfwTC9il0Kt3ce4WkAFk1XkL'
           }
         }
       }
