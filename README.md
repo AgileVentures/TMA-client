@@ -53,13 +53,24 @@ Check out [development.tma-client.divshot.io](http://development.tma-client.divs
   $ npm install && bower install
   ```
 
-5. Run all tests
+5. Add Stripe Public Token
+  
+  In `Gruntfile.js`, look for `// Environment Variables` and add your `STRIPE_PUBLISHABLE_KEY` ngconstant for the `development` and `production` environments. To get a Stripe account: https://stripe.com/
+
+  ```javascript
+    ENV: {
+      name: 'development',
+      STRIPE_PUBLISHABLE_KEY: 'xxxxxxxx'
+    }
+  ```
+
+6. Run all tests
 
   ```shell
   $ grunt test
   ```
 
-6. Run the application
+7. Run the application
 
   ```shell
   $ grunt serve
