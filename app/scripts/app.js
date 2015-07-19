@@ -17,7 +17,8 @@ var app = angular.module('tmaClientApp', [
   'ngSanitize',
   'ngTouch',
   'angular-loading-bar',
-  'config'
+  'config',
+  'angularPayments'
 ]);
 
 app.config(function($routeProvider) {
@@ -54,6 +55,10 @@ app.config(function($routeProvider) {
       templateUrl: 'views/confirm-order.html',
       controller: 'OrderController'
     })
+    .when('/payment/:id', {
+      templateUrl: 'views/payment.html',
+      controller: 'PaymentController'
+    })
     .otherwise({
       redirectTo: '/'
     });
@@ -65,10 +70,10 @@ app.config(function($httpProvider) {
 
 //restricted paths that will redirect to '#/login' if not loggedin
 app.run(function($rootScope, $location, AuthenticationService) {
-  var routePermissions = ['']; //paths that require login. eg: ['/menu']
+  var routePermissions = []; //paths that require login. eg: ['/menu']
 
   $rootScope.$on('$routeChangeStart', function() {
-    if ((routePermissions.indexOf($location.path()) !== -1) && (!AuthenticationService.isLoggedIn()) && ($location.path() !== '')) {
+    if ( (routePermissions.indexOf($location.path()) !== -1) && (!AuthenticationService.isLoggedIn()) ) {
       $location.path('/login');
     }
   });

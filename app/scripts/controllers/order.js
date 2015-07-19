@@ -34,8 +34,7 @@ app.controller('OrderController', function ($scope, $location, Basket, Order, Au
       newOrder.$promise.then(
         function(){
           $scope.basket.clear();
-          alert('Your order was successfully created!');
-          $location.path('/');
+          $location.path('/payment/' + newOrder["id"]);
         },
         function(message){
           $scope.newOrder.errorMessages = message;
