@@ -5,6 +5,6 @@ app.controller('CartController', function($scope, $location, Basket) {
   $scope.isDisabled = $scope.basket.count() === 0;
 
   $scope.checkout = function () {
-    $location.path('/checkout');
+    $location.path('/confirm-order');
   };
 });
