@@ -70,18 +70,24 @@ app.config(function($httpProvider) {
 
 //restricted paths that will redirect to '#/login' if not loggedin
 app.run(function($rootScope, $location, AuthenticationService) {
-  var routePermissions = ['/confirm-order', '/payment/']; //paths that require login. eg: ['/menu']
+  var routePermissions = ['^/confirm-order', '^/payment/']; //regExp paths that require login. eg: ['^/menu']
 
   $rootScope.$on('$routeChangeStart', function() {
-    if (AuthenticationService.isLoggedIn() === false) {
-      for (var i = 0; i < routePermissions.length; i++) {
-        var routeRegExp = new RegExp(routePermissions[i]);
-        if ($location.path().search(routeRegExp) !== -1) {
-          $location.path('/login');
-          break;
-        }
-      };
+    if ((AuthenticationService.isLoggedIn() === false) &&
+        (checkRegExpMatchesString(routePermissions, $location.path()))) {
+      $location.path('/login');
     }
   });
 
 });
+
+
+function checkRegExpMatchesString(regExpArray, string) {
+  for (var i = 0; i < regExpArray.length; i++) {
+    var routeRegExp = new RegExp(regExpArray[i]);
+    if (string.search(routeRegExp) !== -1) {
+      return true;
+    }
+  };
+  return false;
+}
