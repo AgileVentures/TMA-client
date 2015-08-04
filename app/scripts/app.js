@@ -73,8 +73,15 @@ app.run(function($rootScope, $location, AuthenticationService) {
   var routePermissions = ['/confirm-order', '/payment/']; //paths that require login. eg: ['/menu']
 
   $rootScope.$on('$routeChangeStart', function() {
-    if ( (routePermissions.indexOf($location.path()) !== -1) && (!AuthenticationService.isLoggedIn()) ) {
-      $location.path('/login');
+    if (AuthenticationService.isLoggedIn() === false) {
+      for (var i = 0; i < routePermissions.length; i++) {
+        var routeRegExp = new RegExp(routePermissions[i]);
+        if ($location.path().search(routeRegExp) !== -1) {
+          $location.path('/login');
+          break;
+        }
+      };
     }
   });
+
 });
