@@ -47,10 +47,6 @@ app.config(function($routeProvider) {
       templateUrl: 'views/cart.html',
       controller: 'CartController'
     })
-    .when('/checkout', {
-      templateUrl: 'views/checkout.html',
-      controller: 'CheckoutController'
-    })
     .when('/confirm-order', {
       templateUrl: 'views/confirm-order.html',
       controller: 'OrderController'
