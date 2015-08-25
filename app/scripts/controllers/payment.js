@@ -44,7 +44,6 @@ app.controller('PaymentController', function ($scope, $routeParams, Order, $wind
     }
   };
 
-  console.log(ENV);
   $window.Stripe.setPublishableKey(ENV.STRIPE_PUBLISHABLE_KEY);
 
   $scope.clearErrorMessages = function(){

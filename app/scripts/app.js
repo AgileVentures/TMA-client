@@ -47,10 +47,6 @@ app.config(function($routeProvider) {
       templateUrl: 'views/cart.html',
       controller: 'CartController'
     })
-    .when('/checkout', {
-      templateUrl: 'views/checkout.html',
-      controller: 'CheckoutController'
-    })
     .when('/confirm-order', {
       templateUrl: 'views/confirm-order.html',
       controller: 'OrderController'
@@ -70,11 +66,24 @@ app.config(function($httpProvider) {
 
 //restricted paths that will redirect to '#/login' if not loggedin
 app.run(function($rootScope, $location, AuthenticationService) {
-  var routePermissions = []; //paths that require login. eg: ['/menu']
+  var routePermissions = ['^/confirm-order', '^/payment/']; //regExp paths that require login. eg: ['^/menu']
 
   $rootScope.$on('$routeChangeStart', function() {
-    if ( (routePermissions.indexOf($location.path()) !== -1) && (!AuthenticationService.isLoggedIn()) ) {
+    if ((AuthenticationService.isLoggedIn() === false) &&
+        (checkRegExpMatchesString(routePermissions, $location.path()))) {
       $location.path('/login');
     }
   });
+
 });
+
+
+function checkRegExpMatchesString(regExpArray, string) {
+  for (var i = 0; i < regExpArray.length; i++) {
+    var routeRegExp = new RegExp(regExpArray[i]);
+    if (string.search(routeRegExp) !== -1) {
+      return true;
+    }
+  };
+  return false;
+}

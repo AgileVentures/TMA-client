@@ -1,6 +1,6 @@
 'use strict';
 
-app.service('AuthenticationService', function ($http, $q, SessionStoreService, ENV) {
+app.service('AuthenticationService', function ($http, $q, SessionStoreService, ENV, $location) {
   return {
     login: function(user) {
       var deferred = $q.defer();
@@ -18,9 +18,11 @@ app.service('AuthenticationService', function ($http, $q, SessionStoreService, E
       $http.delete(ENV.apiUri + '/v1/sessions')
       .success(function(data){
         SessionStoreService.destroy();
+        $location.path('/');
       })
       .error(function(data){
         SessionStoreService.destroy();
+        $location.path('/');
       });
     },
     register: function(newUser){
