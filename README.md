@@ -19,13 +19,13 @@ Repository for a sample client application for [TakeMeAway API][tma-api]
 
 ## Demo
 
-Check out [development.tma-client.divshot.io](http://development.tma-client.divshot.io)
+Check out <https://tma-client.firebaseapp.com>
 
 ## Development
 
 
 1. Fork and clone the repository
-2. Install nodejs using nvm (If you don't have it already. Recommended version `iojs-v1.6.4` or `node v0.12.2`)
+2. Install `nodejs` using nvm (If you don't have it already. Recommended version `iojs-v1.6.4` or `node v0.12.2`)
 
   ```shell
   $ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.25.1/install.sh | bash
@@ -54,7 +54,7 @@ Check out [development.tma-client.divshot.io](http://development.tma-client.divs
   ```
 
 5. Add Stripe Public Token
-  
+
   In `Gruntfile.js`, look for `// Environment Variables` and add your `STRIPE_PUBLISHABLE_KEY` ngconstant for the `development` and `production` environments. To get a Stripe account: https://stripe.com/
 
   ```javascript
