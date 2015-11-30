@@ -6,7 +6,7 @@
   $hero-background-bottom: #e6e8ea;
   $hero-color: white;
   $gradient-angle: 10deg;
-  $hero-image: 'http://lorempixel.com/960/450/food';
+  $hero-image: '//lorempixel.com/960/450/food';
 
   @include background(url($hero-image), linear-gradient($gradient-angle, $hero-background-bottom, $hero-background-top), no-repeat $hero-background-top scroll);
   background-color: #324766;
